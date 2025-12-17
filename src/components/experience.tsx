@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { Download, Briefcase, GraduationCap, Award, Cpu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Experience } from "@/lib/api";
