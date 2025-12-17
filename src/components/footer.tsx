@@ -9,7 +9,7 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center space-x-2 mb-6">
               <span className="text-xl font-bold flex items-center gap-2">
-                <span className="text-2xl">❖</span> Knowhare
+                <span className="text-2xl">❖</span> Davidshare
               </span>
             </Link>
             <div className="flex gap-4">

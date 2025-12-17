@@ -40,7 +40,7 @@ export function Navbar() {
       <div className="bg-primary/5 dark:bg-black/40 border-b py-2 px-4 md:px-8 text-xs flex justify-between items-center text-muted-foreground">
         <div className="flex gap-4">
           <span className="flex items-center gap-1"><Twitter size={12} /> +234 816 746 2431</span>
-          <span className="flex items-center gap-1"><Mail size={12} /> username@mail.com</span>
+          <span className="flex items-center gap-1"><Mail size={12} />  davidessienshare@gmail.com</span>
         </div>
         <div className="flex gap-3">
           <Linkedin size={14} className="hover:text-foreground cursor-pointer" />
@@ -55,7 +55,7 @@ export function Navbar() {
           <div className="mr-4 flex">
             <Link href="/" className="mr-6 flex items-center space-x-2">
               <span className="text-xl font-bold flex items-center gap-2">
-                <span className="text-2xl">❖</span> Knowhare
+                <span className="text-2xl">❖</span> Davidshare
               </span>
             </Link>
           </div>
@@ -63,7 +63,7 @@ export function Navbar() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
             <NavLink href="#services">Services</NavLink>
-            <NavLink href="#works">Works</NavLink>
+            <NavLink href="#works">Projects</NavLink>
             <NavLink href="#about">About</NavLink>
             <NavLink href="#testimonials">Testimonials</NavLink>
             <NavLink href="/blog">Blog</NavLink>
