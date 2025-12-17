@@ -15,6 +15,7 @@ tags:
 excerpt: Part 3 of the SSH guide—security best practices, a glimpse of advanced features, and why SSH mastery matters for DevOps and cloud.
 coverImage: /images/posts/ssh-intro.jpg
 status: published
+author: David Essien
 ---
 
 ## SSH Security Best Practices
@@ -30,11 +31,9 @@ On many Linux systems, edit `/etc/ssh/sshd_config`:
 PasswordAuthentication no
 PubkeyAuthentication yes
 
-
 Then restart the SSH daemon:
 
 sudo systemctl restart sshd
-
 
 Always test in a second session before closing your original one to avoid locking yourself out.
 
@@ -45,10 +44,8 @@ Recommended:
 - Prefer **Ed25519**:
   ssh-keygen -t ed25519
 
-
 - If you must use RSA:
   ssh-keygen -t rsa -b 4096
-
 
 Avoid weak or deprecated key types and short key lengths.
 

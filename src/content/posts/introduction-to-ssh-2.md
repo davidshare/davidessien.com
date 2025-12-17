@@ -15,6 +15,7 @@ tags:
 excerpt: Part 2 of the SSH guide—generating SSH keys, copying them to servers, and using SSH effectively for remote access and file transfer.
 coverImage: /images/posts/ssh-intro.jpg
 status: published
+author: David Essien
 ---
 
 ## Generating and Using SSH Keys

@@ -15,6 +15,7 @@ tags:
 excerpt: Part 1 of a practical, beginner-friendly guide to SSH—what it is, why it matters, and the core concepts you must understand.
 coverImage: /images/posts/ssh-intro.jpg
 status: published
+author: David Essien
 ---
 
 ## What Is SSH?
