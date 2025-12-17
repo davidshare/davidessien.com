@@ -21,17 +21,21 @@ export interface Project {
   stats?: string;
 }
 
-export interface Post {
+export interface PostMeta {
   slug: string;
   title: string;
   excerpt: string;
   date: string;
+  category: string;
+  coverImage: string;
+  views?: number;
+  shares?: number;
+  readTime?: string;
+}
+
+export interface Post extends PostMeta {
   author: string;
   authorImage?: string;
-  coverImage: string;
-  category: string;
-  tags?: string[]; // Add this
-  draft?: boolean; // Add this
   content: string;
 }
 

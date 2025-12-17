@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import type { Post } from "@/lib/api";
+import type { Post, PostMeta } from "@/lib/api";
 import { formatDate } from "@/lib/utils";
 
 interface BlogCardProps {
@@ -12,7 +12,7 @@ interface BlogCardProps {
   compact?: boolean;
 }
 
-export function BlogCard({ post, compact = false }: BlogCardProps) {
+export function BlogCard({ post }: { post: PostMeta }) {
   return (
     <div className="group flex flex-col rounded-2xl border bg-card overflow-hidden h-full">
       <div className="relative aspect-[16/10] overflow-hidden">

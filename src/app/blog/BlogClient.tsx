@@ -4,20 +4,13 @@ import React, { useState, useMemo } from "react";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BlogCard } from "@/components/blog-card";
+import { PostMeta } from '@/lib/api'
 
 const CATEGORIES = ["All", "Product", "Business", "Client interactions"];
 const POSTS_PER_PAGE = 6;
 
-interface Post {
-  slug: string;
-  title: string;
-  excerpt: string;
-  imageUrl: string;
-  categories: string[];
-}
-
 interface BlogClientProps {
-  posts: Post[];
+  posts: PostMeta[];
 }
 
 const BlogClient: React.FC<BlogClientProps> = ({ posts }) => {
@@ -28,7 +21,7 @@ const BlogClient: React.FC<BlogClientProps> = ({ posts }) => {
   const filteredPosts = useMemo(() => {
     return posts.filter(post => {
       const matchesCategory =
-        selectedCategory === 'All' || post.categories.includes(selectedCategory);
+        selectedCategory === 'All' || post.category.includes(selectedCategory);
       const matchesSearch =
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
