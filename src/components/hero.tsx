@@ -13,14 +13,10 @@ export function Hero() {
                 I AM DAVID ESSIEN
               </p>
               <h1 className="text-4xl font-extrabold tracking-tight lg:text-6xl xl:text-7xl">
-                A Devops Engineer <br className="hidden lg:block" />
-                & Co-founder
+                Devops/Cloud Engineer
               </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl leading-relaxed">
-                DevOps engineer with over 15 years of experience in the tech
-                industry. He is also the co-founder of Psifon.org and Tersu (an
-                organization dedicated to the implementation and democratization
-                of practical knowledge).
+                with over 15 years of experience in the tech industry. He is also the co-founder of Psifon.org and Tersu (an organization dedicated to the implementation and democratization of practical knowledge).
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -41,19 +37,40 @@ export function Hero() {
             <div className="relative aspect-square">
               {/* Background Shapes/Icons */}
               <div className="absolute top-0 left-0 animate-bounce delay-100">
-                <div className="text-4xl">🌱</div>
+                <div className="text-4xl text-slate-900">
+                  <Image
+                    src='/images/Amazon-Web-Services-Emblem.png'
+                    height={40}
+                    width={40}
+                    alt='aws logo'
+                  />
+                </div>
               </div>
               <div className="absolute top-10 right-10 animate-pulse">
-                <div className="text-4xl">🐍</div>
+                <div className="text-4xl">
+                  <Image
+                    src='/images/kubernetes-wheels.jpg'
+                    height={40}
+                    width={40}
+                    alt='kubenetes logo'
+                  />
+                </div>
               </div>
               <div className="absolute bottom-20 left-10 animate-pulse delay-75">
-                <div className="text-4xl">📦</div>
+                <div className="text-4xl">
+                  <Image
+                    src='/images/docker-logo.jpg'
+                    height={40}
+                    width={40}
+                    alt='kubenetes logo'
+                  />
+                </div>
               </div>
 
               {/* Main Image Container */}
               <div className="rounded-full overflow-hidden border-8 border-muted/20 bg-muted/10 w-full h-full relative z-10">
                 <Image
-                  src="https://picsum.photos/800/800"
+                  src="/images/david-essien.jpg"
                   alt="David Essien"
                   fill
                   className="object-cover"

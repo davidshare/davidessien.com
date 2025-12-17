@@ -103,10 +103,6 @@ const BlogClient: React.FC<BlogClientProps> = ({ posts }) => {
         {paginatedPosts.map(post => (
           <BlogCard key={post.slug} post={post} />
         ))}
-        {/* Duplicate for demo if few posts */}
-        {paginatedPosts.length < 3 && paginatedPosts.map(post => (
-          <BlogCard key={`${post.slug}-dup`} post={{ ...post, slug: `${post.slug}-dup` }} />
-        ))}
       </div>
 
       {/* Pagination */}

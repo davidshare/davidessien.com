@@ -66,7 +66,7 @@ export function Navbar() {
             <NavLink href="#works">Works</NavLink>
             <NavLink href="#about">About</NavLink>
             <NavLink href="#testimonials">Testimonials</NavLink>
-            <NavLink href="blog">Blog</NavLink>
+            <NavLink href="/blog">Blog</NavLink>
             <Button variant="default" size="sm" className="rounded-none bg-primary text-primary-foreground hover:bg-primary/90">
               Hire Me
             </Button>
