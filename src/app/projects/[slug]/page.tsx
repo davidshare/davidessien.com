@@ -1,0 +1,166 @@
+import { Metadata } from "next";
+import { getProjectBySlug, getAllProjectSlugs } from "@/lib/projects";
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import Link from "next/link";
+
+export async function generateStaticParams() {
+  const slugs = getAllProjectSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = await getProjectBySlug(slug);
+
+  if (!project) {
+    return {
+      title: "Project Not Found",
+    };
+  }
+
+  return {
+    title: `${project.title} | David Essien`,
+    description: project.description,
+  };
+}
+
+export default async function ProjectSinglePage({
+  params
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params;
+  const project = await getProjectBySlug(slug);
+
+  if (!project) {
+    return notFound();
+  }
+
+  return (
+    <div className="min-h-screen bg-background py-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        {/* Back Button */}
+        <div className="mb-8">
+          <Button variant="ghost" asChild className="gap-2">
+            <Link href="/projects">
+              <ArrowLeft className="h-4 w-4" />
+              Back to Projects
+            </Link>
+          </Button>
+        </div>
+
+        {/* Header */}
+        <div className="mb-8">
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.categories.map((category) => (
+              <span
+                key={category}
+                className="px-3 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary"
+              >
+                {category}
+              </span>
+            ))}
+          </div>
+
+          <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
+
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div className="flex items-center gap-4 text-muted-foreground">
+              <span className="font-medium text-primary">{project.projectType}</span>
+              <span>•</span>
+              <span>{project.duration}</span>
+            </div>
+
+            <div className="flex gap-2">
+              <Button variant="outline" size="sm" className="gap-2">
+                <Github className="h-4 w-4" />
+                Code
+              </Button>
+              <Button variant="default" size="sm" className="gap-2">
+                <ExternalLink className="h-4 w-4" />
+                Live Demo
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Project Diagram */}
+        {project.diagram && (
+          <div className="mb-12 rounded-2xl overflow-hidden border shadow-lg">
+            <div className="relative aspect-video">
+              <Image
+                src={project.diagram}
+                alt={`${project.title} architecture diagram`}
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Description */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold mb-4">Project Overview</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            {project.description}
+          </p>
+        </div>
+
+        {/* Content */}
+        <article
+          className="prose prose-lg dark:prose-invert max-w-none mb-12
+          prose-headings:font-bold prose-headings:text-foreground
+          prose-p:text-muted-foreground prose-p:leading-relaxed
+          prose-ul:list-disc prose-ol:list-decimal
+          prose-li:text-muted-foreground
+          prose-strong:text-foreground
+          prose-a:text-primary hover:prose-a:underline
+          prose-img:rounded-xl
+          prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-6 prose-blockquote:italic"
+          dangerouslySetInnerHTML={{ __html: project.html }}
+        />
+
+        {/* Tech Stack */}
+        {project.techStack.length > 0 && (
+          <div className="mb-12 p-6 rounded-2xl bg-secondary/20">
+            <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
+            <div className="flex flex-wrap gap-3">
+              {project.techStack.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-4 py-2 rounded-lg bg-background border text-sm font-medium"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Tags */}
+        {project.tags.length > 0 && (
+          <div className="mb-12">
+            <h3 className="text-lg font-semibold mb-3">Tags</h3>
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 text-sm rounded-full bg-muted text-muted-foreground"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

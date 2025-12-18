@@ -17,6 +17,7 @@ excerpt: A beginner-friendly introduction to service mesh—what it is, why it e
 coverImage: /images/posts/service-mesh-intro.jpg
 status: published
 author: David Essien
+draft: false
 ---
 
 ## What Is a Service Mesh?

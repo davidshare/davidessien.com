@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "npm run build:blog && npm run build:experience && next build",
     "build:blog": "tsx src/scripts/build-blog-index.ts",
     "build:experience": "tsx src/scripts/build-experience-index.ts",
-    "dev": "npm run build:blog && npm run build:experience && next dev",
+    "build:projects": "tsx src/scripts/build-project-index.ts",
+    "build:all": "npm run build:blog && npm run build:projects && npm run build:experience",
+    "dev": "npm run build:all && next dev",
+    "build": " npm run build:all && next build",
     "start": "next start",
     "lint": "eslint"
   },

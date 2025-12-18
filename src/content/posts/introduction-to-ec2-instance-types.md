@@ -17,6 +17,7 @@ excerpt: A beginner-friendly guide to AWS EC2 instance types—what they are, ho
 coverImage: /images/posts/ec2-instance-types-intro.jpg
 status: published
 author: David Essien
+draft: false
 ---
 
 ## What Are EC2 Instance Types?

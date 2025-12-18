@@ -16,6 +16,7 @@ excerpt: Part 1 of a practical, beginner-friendly guide to SSH—what it is, why
 coverImage: /images/posts/ssh-intro.jpg
 status: published
 author: David Essien
+draft: false
 ---
 
 ## What Is SSH?

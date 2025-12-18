@@ -31,12 +31,14 @@ export interface PostMeta {
   views?: number;
   shares?: number;
   readTime?: string;
+  authorImage?: string;
+  author: string;
 }
 
 export interface Post extends PostMeta {
-  author: string;
-  authorImage?: string;
   content: string;
+  draft: boolean;
+  tags: string[];
 }
 
 export interface Experience {
@@ -119,11 +121,6 @@ export async function getPosts(): Promise<Post[]> {
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   const filePath = path.join(POSTS_DIR, `${slug}.md`);
-  if (!fs.existsSync(filePath)) {
-    // Fallback to mock data check (optional)
-    const mock = MOCK_POSTS.find((p) => p.slug === slug);
-    return mock || null;
-  }
 
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const {data, content} = matter(fileContent);

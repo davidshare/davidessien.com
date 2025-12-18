@@ -4,13 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import type { Post, PostMeta } from "@/lib/api";
+import type { PostMeta } from "@/lib/api";
 import { formatDate } from "@/lib/utils";
-
-interface BlogCardProps {
-  post: Post;
-  compact?: boolean;
-}
 
 export function BlogCard({ post }: { post: PostMeta }) {
   return (

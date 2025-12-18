@@ -1,0 +1,65 @@
+[
+  {
+    "title": "AWS VPC and Autoscaling",
+    "projectType": "Infrastructure",
+    "diagram": "/images/projects/aws-vpc-autoscaling.jpg",
+    "duration": "N/A",
+    "description": "Built a secure three-tier architecture on AWS VPC with public/private subnets, NAT gateways, and security groups, configured with auto-scaling for variable traffic loads.",
+    "primaryCategory": "Cloud",
+    "categories": [
+      "Cloud",
+      "AWS",
+      "Infrastructure",
+      "Devops"
+    ],
+    "tags": [
+      "aws",
+      "vpc",
+      "autoscaling",
+      "infrastructure",
+      "cloud"
+    ],
+    "techStack": [
+      "AWS VPC",
+      "AWS CloudWatch",
+      "AWS EC2",
+      "NAT Gateway",
+      "Security Groups",
+      "Auto Scaling Groups"
+    ],
+    "slug": "00-aws-vpc-autoscaling",
+    "order": 0
+  },
+  {
+    "title": "Fullstack Monitoring Setup with Docker-Compose",
+    "projectType": "DevOps / Monitoring",
+    "diagram": "/images/projects/aws-vpc-autoscaling.jpg",
+    "duration": "N/A",
+    "description": "Developed a comprehensive monitoring system for a to-do application with FastAPI backend and Next.js frontend, using Docker Compose, Terraform, and observability tools.",
+    "primaryCategory": "Observability",
+    "categories": [
+      "Monitoring",
+      "Devops"
+    ],
+    "tags": [
+      "monitoring",
+      "docker",
+      "observability",
+      "devops",
+      "fullstack"
+    ],
+    "techStack": [
+      "Docker Compose",
+      "Terraform",
+      "Prometheus",
+      "Grafana",
+      "Loki",
+      "Promtail",
+      "Traefik",
+      "FastAPI",
+      "Next.js"
+    ],
+    "slug": "01-fullstack-monitoring-docker-compose",
+    "order": 1
+  }
+]
