@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
   const slugs = getAllExperienceSlugs();
-  console.log('[generateStaticParams] Experience slugs:', slugs);
   return slugs.map((slug) => ({ slug }));
 }
 
@@ -13,7 +12,6 @@ export default async function ExperienceSinglePage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params;
-  console.log('[ExperienceSinglePage] Loading slug:', slug);
 
   const experience = await getExperienceBySlug(slug);
 
@@ -31,9 +29,23 @@ export default async function ExperienceSinglePage({
           {experience.location && <span>• {experience.location}</span>}
           <span>• {experience.duration.label}</span>
         </div>
-        <div className="prose prose-lg max-w-none">
-          <div dangerouslySetInnerHTML={{ __html: experience.html }} />
-        </div>
+        <article
+          className="max-w-none
+          text-gray-800 text-lg leading-relaxed
+          [&_h1]:text-4xl [&_h1]:font-bold [&_h1]:text-gray-900 [&_h1]:mt-10 [&_h1]:mb-6
+          [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:text-gray-800 [&_h2]:mt-8 [&_h2]:mb-4
+          [&_h3]:text-2xl [&_h3]:font-bold [&_h3]:text-gray-800 [&_h3]:mt-6 [&_h3]:mb-3
+          [&_p]:my-6 [&_p]:leading-8
+          [&_ul]:list-disc [&_ul]:pl-8 [&_ul]:my-6
+          [&_ol]:list-decimal [&_ol]:pl-8 [&_ol]:my-6
+          [&_li]:my-3
+          [&_:not(pre)_code]:px-1.5 [&_:not(pre)_code]:py-0.5 [&_:not(pre)_code]:rounded [&_:not(pre)_code]:font-mono [&_:not(pre)_code]:text-sm
+          [&_pre]:bg-gray-900 [&_pre]:text-gray-100 [&_pre]:p-6 [&_pre]:rounded-xl [&_pre]:my-8 [&_pre]:overflow-x-auto
+          [&_a]:text-primary [&_a]:font-medium [&_a]:hover:underline
+          [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-6 [&_blockquote]:italic [&_blockquote]:my-8
+          [&_strong]:font-bold [&_strong]:text-gray-900"
+          dangerouslySetInnerHTML={{ __html: experience.html }}
+        />
         {experience.techStack?.length > 0 && (
           <div className="mt-6 flex flex-wrap gap-2">
             {experience.techStack.map((skill) => (
