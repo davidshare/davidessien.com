@@ -1,12 +1,9 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BarChart2, Share2, Clock, Facebook, Twitter, Instagram, Send, Linkedin } from "lucide-react";
 import { marked } from "marked";
 import { getPostBySlug, getPosts } from "@/lib/api";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/utils";
 import { BlogCard } from "@/components/blog-card";
@@ -38,7 +35,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
-      <Navbar />
       <main className="flex-1">
         <div className="container px-4 md:px-8 py-12 md:py-16">
 
@@ -235,7 +231,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
