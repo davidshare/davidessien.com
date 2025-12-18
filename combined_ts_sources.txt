@@ -879,19 +879,33 @@ export default async function ProjectSinglePage({
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div className="flex items-center gap-4 text-muted-foreground">
               <span className="font-medium text-primary">{project.projectType}</span>
-              <span>•</span>
-              <span>{project.duration}</span>
+
+              {project.duration !== "N/A" && (
+                <>
+                  <span>•</span>
+                  <span>{project.duration}</span>
+                </>
+              )}
             </div>
 
             <div className="flex gap-2">
-              <Button variant="outline" size="sm" className="gap-2">
-                <Github className="h-4 w-4" />
-                Code
-              </Button>
-              <Button variant="default" size="sm" className="gap-2">
-                <ExternalLink className="h-4 w-4" />
-                Live Demo
-              </Button>
+              {project.repoUrl && (
+                <Button asChild variant="outline" size="sm" className="gap-2">
+                  <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                    <Github className="h-4 w-4" />
+                    Code
+                  </a>
+                </Button>
+              )}
+
+              {project.demoUrl && (
+                <Button asChild variant="default" size="sm" className="gap-2">
+                  <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="h-4 w-4" />
+                    Live Demo
+                  </a>
+                </Button>
+              )}
             </div>
           </div>
         </div>
@@ -910,42 +924,31 @@ export default async function ProjectSinglePage({
           </div>
         )}
 
-        {/* Description */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">Project Overview</h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            {project.description}
-          </p>
-        </div>
-
         {/* Content */}
         <article
           className="prose prose-lg dark:prose-invert max-w-none mb-12
           prose-headings:font-bold prose-headings:text-foreground
-          prose-p:text-muted-foreground prose-p:leading-relaxed
+          prose-p:leading-relaxed
           prose-ul:list-disc prose-ol:list-decimal
-          prose-li:text-muted-foreground
           prose-strong:text-foreground
           prose-a:text-primary hover:prose-a:underline
           prose-img:rounded-xl
+          prose-ul:pl-6 prose-ol:pl-6
+          prose-li:my-1
           prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-6 prose-blockquote:italic"
           dangerouslySetInnerHTML={{ __html: project.html }}
         />
 
         {/* Tech Stack */}
         {project.techStack.length > 0 && (
-          <div className="mb-12 p-6 rounded-2xl bg-secondary/20">
+          <div className="mb-12 py-6 rounded-2xl bg-secondary/20">
             <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
-            <div className="flex flex-wrap gap-3">
+            <ul className="list-disc list-inside space-y-1">
               {project.techStack.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-4 py-2 rounded-lg bg-background border text-sm font-medium"
-                >
-                  {tech}
-                </span>
+                <li key={tech}>{tech}</li>
               ))}
-            </div>
+            </ul>
+
           </div>
         )}
 
@@ -957,7 +960,7 @@ export default async function ProjectSinglePage({
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 text-sm rounded-full bg-muted text-muted-foreground"
+                  className="px-3 py-1 text-sm rounded-full bg-muted"
                 >
                   #{tag}
                 </span>
@@ -2225,6 +2228,8 @@ export const ProjectFrontmatterSchema = z.object({
   categories: z.array(z.string()).default([]),
   tags: z.array(z.string()).default([]),
   techStack: z.array(z.string()).default([]),
+  repoUrl: z.string().url().optional(),
+  demoUrl: z.string().url().optional(),
 });
 
 export type ProjectFrontmatter = z.infer<typeof ProjectFrontmatterSchema>;

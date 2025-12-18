@@ -211,7 +211,7 @@ You can simplify connections by configuring hosts in `~/.ssh/config` on your loc
 
 Example:
 
-```sshconfig
+```ini
 Host myserver
   HostName 203.0.113.10
   User ubuntu

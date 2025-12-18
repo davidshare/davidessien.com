@@ -2,11 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BarChart2, Share2, Clock, Facebook, Twitter, Instagram, Send, Linkedin } from "lucide-react";
-import { marked } from "marked";
 import { getPostBySlug, getPosts } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/utils";
 import { BlogCard } from "@/components/blog-card";
+import { renderMarkdown } from "@/lib/markdown";
 
 export async function generateStaticParams() {
   const posts = await getPosts();
@@ -24,7 +24,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     notFound();
   }
 
-  const contentHtml = marked.parse(post.content);
+  const contentHtml = await renderMarkdown(post.content);
 
   // Suggested posts logic
   const suggestedPosts = allPosts.filter(p => p.slug !== slug).slice(0, 3);
