@@ -25,8 +25,8 @@ techStack:
   - Traefik
   - FastAPI
   - Next.js
-codeRepo: https://github.com/davidshare
-demoLink: https://github.com/davidshare
+repoUrl: https://github.com/davidshare
+demoUrl: https://github.com/davidshare
 ---
 
 ## Project Overview

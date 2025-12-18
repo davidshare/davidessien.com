@@ -609,6 +609,368 @@ export default async function Home() {
 
 
 ==========================================
+FILE: ./src/app/projects/page.tsx
+==========================================
+
+import { Metadata } from "next";
+import { getAllProjects } from "@/lib/projects";
+import ProjectsClient from "./ProjectsClient";
+
+export const metadata: Metadata = {
+  title: "Projects | David Essien",
+  description: "Explore technical projects showcasing cloud infrastructure, DevOps practices, and full-stack development skills.",
+};
+
+export default async function ProjectsPage() {
+  const projects = await getAllProjects();
+
+  return (
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
+      <main className="flex-1 py-12 md:py-20">
+        <div className="container px-4 md:px-8">
+          <ProjectsClient projects={projects} />
+        </div>
+      </main>
+    </div>
+  );
+}
+
+==========================================
+FILE: ./src/app/projects/ProjectsClient.tsx
+==========================================
+
+'use client'
+
+import React, { useState, useMemo } from "react";
+import { Search } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import ProjectCard from "@/components/project-card";
+import { Project } from "@/lib/projects";
+
+const POSTS_PER_PAGE = 6;
+
+interface ProjectsClientProps {
+  projects: Project[];
+}
+
+const ProjectsClient: React.FC<ProjectsClientProps> = ({ projects }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Extract all unique categories from projects
+  const allCategories = useMemo(() => {
+    const categoriesSet = new Set<string>(['All']);
+    projects.forEach(project => {
+      project.categories.forEach(category => categoriesSet.add(category));
+    });
+    return Array.from(categoriesSet);
+  }, [projects]);
+
+  const filteredProjects = useMemo(() => {
+    return projects.filter(project => {
+      // Filter by category
+      const matchesCategory =
+        selectedCategory === 'All' || project.categories.includes(selectedCategory);
+
+      // Filter by search query
+      const matchesSearch =
+        searchQuery === '' ||
+        project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.techStack.some(tech => tech.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        project.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+
+      return matchesCategory && matchesSearch;
+    });
+  }, [projects, searchQuery, selectedCategory]);
+
+  const totalPages = Math.ceil(filteredProjects.length / POSTS_PER_PAGE);
+  const paginatedProjects = filteredProjects.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE
+  );
+
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
+  };
+
+  const handlePageChange = (direction: 'prev' | 'next') => {
+    setCurrentPage(prev => {
+      if (direction === 'prev') return Math.max(prev - 1, 1);
+      else return Math.min(prev + 1, totalPages);
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <>
+      {/* Header Section */}
+      <div className="mb-12">
+        <p className="mb-2 text-sm font-medium text-muted-foreground uppercase tracking-wider">
+          PROJECT PORTFOLIO
+        </p>
+        <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl mb-6">
+          Technical Projects
+        </h1>
+        <p className="max-w-2xl text-muted-foreground text-lg leading-relaxed">
+          Explore my technical projects showcasing cloud infrastructure, DevOps practices,
+          and full-stack development skills.
+        </p>
+      </div>
+
+      {/* Controls Section */}
+      <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
+        <div className="flex flex-wrap gap-2 w-full md:w-auto">
+          {allCategories.map(cat => (
+            <Button
+              key={cat}
+              variant={cat === selectedCategory ? "default" : "secondary"}
+              className={`rounded-full px-6 ${cat === selectedCategory ? "bg-primary text-primary-foreground" : "bg-muted hover:bg-muted/80"}`}
+              onClick={() => handleCategoryClick(cat)}
+            >
+              {cat}
+            </Button>
+          ))}
+        </div>
+
+        <div className="relative w-full md:w-80">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" />
+          <input
+            type="text"
+            placeholder="Search projects by title, tech, or keyword..."
+            value={searchQuery}
+            onChange={e => { setSearchQuery(e.target.value); setCurrentPage(1); }}
+            className="w-full h-10 rounded-full bg-muted border-none pl-10 pr-4 text-sm focus:ring-1 focus:ring-primary outline-none transition-all"
+          />
+        </div>
+      </div>
+
+      {/* Results Count */}
+      <div className="mb-6 text-sm text-muted-foreground">
+        Showing {filteredProjects.length} of {projects.length} projects
+        {selectedCategory !== 'All' && ` in "${selectedCategory}"`}
+      </div>
+
+      {/* Projects Grid */}
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {paginatedProjects.map(project => (
+          <ProjectCard key={project.slug} project={project} />
+        ))}
+      </div>
+
+      {/* No Results */}
+      {paginatedProjects.length === 0 && (
+        <div className="text-center py-12">
+          <p className="text-gray-500 dark:text-gray-400 text-lg">
+            No projects found matching your criteria. Try a different search or category.
+          </p>
+        </div>
+      )}
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="mt-16 flex justify-center items-center gap-4">
+          <Button
+            variant="outline"
+            className="rounded-md"
+            onClick={() => handlePageChange('prev')}
+            disabled={currentPage === 1}
+          >
+            Back
+          </Button>
+          <span className="text-sm font-medium">
+            Page {currentPage} of {totalPages}
+          </span>
+          <Button
+            variant="default"
+            className="rounded-md bg-black text-white dark:bg-white dark:text-black"
+            onClick={() => handlePageChange('next')}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </Button>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default ProjectsClient;
+
+==========================================
+FILE: ./src/app/projects/[slug]/page.tsx
+==========================================
+
+import { Metadata } from "next";
+import { getProjectBySlug, getAllProjectSlugs } from "@/lib/projects";
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import Link from "next/link";
+
+export async function generateStaticParams() {
+  const slugs = getAllProjectSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = await getProjectBySlug(slug);
+
+  if (!project) {
+    return {
+      title: "Project Not Found",
+    };
+  }
+
+  return {
+    title: `${project.title} | David Essien`,
+    description: project.description,
+  };
+}
+
+export default async function ProjectSinglePage({
+  params
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params;
+  const project = await getProjectBySlug(slug);
+
+  if (!project) {
+    return notFound();
+  }
+
+  return (
+    <div className="min-h-screen bg-background py-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        {/* Back Button */}
+        <div className="mb-8">
+          <Button variant="ghost" asChild className="gap-2">
+            <Link href="/projects">
+              <ArrowLeft className="h-4 w-4" />
+              Back to Projects
+            </Link>
+          </Button>
+        </div>
+
+        {/* Header */}
+        <div className="mb-8">
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.categories.map((category) => (
+              <span
+                key={category}
+                className="px-3 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary"
+              >
+                {category}
+              </span>
+            ))}
+          </div>
+
+          <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
+
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div className="flex items-center gap-4 text-muted-foreground">
+              <span className="font-medium text-primary">{project.projectType}</span>
+              <span>•</span>
+              <span>{project.duration}</span>
+            </div>
+
+            <div className="flex gap-2">
+              <Button variant="outline" size="sm" className="gap-2">
+                <Github className="h-4 w-4" />
+                Code
+              </Button>
+              <Button variant="default" size="sm" className="gap-2">
+                <ExternalLink className="h-4 w-4" />
+                Live Demo
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Project Diagram */}
+        {project.diagram && (
+          <div className="mb-12 rounded-2xl overflow-hidden border shadow-lg">
+            <div className="relative aspect-video">
+              <Image
+                src={project.diagram}
+                alt={`${project.title} architecture diagram`}
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Description */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold mb-4">Project Overview</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            {project.description}
+          </p>
+        </div>
+
+        {/* Content */}
+        <article
+          className="prose prose-lg dark:prose-invert max-w-none mb-12
+          prose-headings:font-bold prose-headings:text-foreground
+          prose-p:text-muted-foreground prose-p:leading-relaxed
+          prose-ul:list-disc prose-ol:list-decimal
+          prose-li:text-muted-foreground
+          prose-strong:text-foreground
+          prose-a:text-primary hover:prose-a:underline
+          prose-img:rounded-xl
+          prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-6 prose-blockquote:italic"
+          dangerouslySetInnerHTML={{ __html: project.html }}
+        />
+
+        {/* Tech Stack */}
+        {project.techStack.length > 0 && (
+          <div className="mb-12 p-6 rounded-2xl bg-secondary/20">
+            <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
+            <div className="flex flex-wrap gap-3">
+              {project.techStack.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-4 py-2 rounded-lg bg-background border text-sm font-medium"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Tags */}
+        {project.tags.length > 0 && (
+          <div className="mb-12">
+            <h3 className="text-lg font-semibold mb-3">Tags</h3>
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 text-sm rounded-full bg-muted text-muted-foreground"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+==========================================
 FILE: ./src/components/blog-card.tsx
 ==========================================
 
@@ -618,13 +980,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import type { Post, PostMeta } from "@/lib/api";
+import type { PostMeta } from "@/lib/api";
 import { formatDate } from "@/lib/utils";
-
-interface BlogCardProps {
-  post: Post;
-  compact?: boolean;
-}
 
 export function BlogCard({ post }: { post: PostMeta }) {
   return (
@@ -1220,7 +1577,7 @@ export function Navbar() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
             <NavLink href="/#services">Services</NavLink>
-            <NavLink href="#works">Projects</NavLink>
+            <NavLink href="/projects">Projects</NavLink>
             <NavLink href="#about">About</NavLink>
             <NavLink href="#testimonials">Testimonials</NavLink>
             <NavLink href="/blog">Blog</NavLink>
@@ -1273,6 +1630,101 @@ export function Navbar() {
         )}
       </header>
     </div>
+  );
+}
+
+==========================================
+FILE: ./src/components/project-card.tsx
+==========================================
+
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import type { Project } from "@/lib/projects";
+
+interface ProjectCardProps {
+  project: Project;
+}
+
+export default function ProjectCard({ project }: ProjectCardProps) {
+  return (
+    <Link href={`/projects/${project.slug}`}>
+      <div className="group flex flex-col rounded-2xl border bg-card overflow-hidden h-full hover:shadow-lg transition-all duration-300">
+        {/* Project Diagram/Image */}
+        {project.diagram && (
+          <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-gray-900">
+            <Image
+              src={project.diagram}
+              alt={project.title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+        )}
+
+        {/* Content */}
+        <div className="flex flex-col flex-1 p-6">
+          {/* Categories */}
+          <div className="flex flex-wrap gap-2 mb-3">
+            {project.categories.slice(0, 3).map((category) => (
+              <span
+                key={category}
+                className="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary"
+              >
+                {category}
+              </span>
+            ))}
+          </div>
+
+          {/* Title */}
+          <h3 className="mb-3 text-xl font-bold leading-tight line-clamp-2 group-hover:text-primary transition-colors">
+            {project.title}
+          </h3>
+
+          {/* Description */}
+          <p className="mb-6 text-sm text-muted-foreground line-clamp-3 flex-1">
+            {project.description}
+          </p>
+
+          {/* Tech Stack Preview */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.techStack.slice(0, 3).map((tech) => (
+              <span
+                key={tech}
+                className="px-2 py-1 text-xs rounded bg-secondary text-secondary-foreground"
+              >
+                {tech}
+              </span>
+            ))}
+            {project.techStack.length > 3 && (
+              <span className="px-2 py-1 text-xs text-muted-foreground">
+                +{project.techStack.length - 3} more
+              </span>
+            )}
+          </div>
+
+          {/* Type and Duration */}
+          <div className="flex items-center justify-between text-sm text-muted-foreground mt-auto">
+            <span className="font-medium">{project.projectType}</span>
+            <span>{project.duration}</span>
+          </div>
+
+          {/* View Project Button */}
+          <div className="mt-4 pt-4 border-t">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="w-full gap-2 rounded-full hover:bg-primary hover:text-primary-foreground group-hover:translate-x-1 transition-all"
+            >
+              View Details <ArrowRight className="h-3 w-3" />
+            </Button>
+          </div>
+        </div>
+      </div>
+    </Link>
   );
 }
 
@@ -1567,12 +2019,14 @@ export interface PostMeta {
   views?: number;
   shares?: number;
   readTime?: string;
+  authorImage?: string;
+  author: string;
 }
 
 export interface Post extends PostMeta {
-  author: string;
-  authorImage?: string;
   content: string;
+  draft: boolean;
+  tags: string[];
 }
 
 export interface Experience {
@@ -1655,11 +2109,6 @@ export async function getPosts(): Promise<Post[]> {
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   const filePath = path.join(POSTS_DIR, `${slug}.md`);
-  if (!fs.existsSync(filePath)) {
-    // Fallback to mock data check (optional)
-    const mock = MOCK_POSTS.find((p) => p.slug === slug);
-    return mock || null;
-  }
 
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const {data, content} = matter(fileContent);
@@ -1758,6 +2207,27 @@ export const ExperienceFrontmatterSchema = z.object({
 });
 
 export type ExperienceFrontmatter = z.infer<typeof ExperienceFrontmatterSchema>;
+
+
+==========================================
+FILE: ./src/lib/content/project.schema.ts
+==========================================
+
+import {z} from "zod";
+
+export const ProjectFrontmatterSchema = z.object({
+  title: z.string(),
+  projectType: z.string(),
+  diagram: z.string().optional(),
+  duration: z.string(),
+  description: z.string(),
+  primaryCategory: z.string(),
+  categories: z.array(z.string()).default([]),
+  tags: z.array(z.string()).default([]),
+  techStack: z.array(z.string()).default([]),
+});
+
+export type ProjectFrontmatter = z.infer<typeof ProjectFrontmatterSchema>;
 
 
 ==========================================
@@ -1899,6 +2369,101 @@ export async function renderMarkdown(content: string): Promise<string> {
 
   return html;
 }
+
+
+==========================================
+FILE: ./src/lib/projects.ts
+==========================================
+
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import {renderMarkdown} from "./markdown";
+import {
+  ProjectFrontmatterSchema,
+  type ProjectFrontmatter,
+} from "./content/project.schema";
+import {cache} from "react";
+
+const PROJECTS_DIR = path.join(process.cwd(), "src/content/projects");
+
+export interface Project extends ProjectFrontmatter {
+  slug: string;
+  order: number;
+  content: string;
+  html: string;
+}
+
+function parseFilename(filename: string): {order: number; slug: string} {
+  const base = filename.replace(/\.md$/, "");
+  const match = base.match(/^(\d+)-/);
+  let order = 0;
+  const slug = base;
+
+  if (match) {
+    order = parseInt(match[1], 10);
+  }
+
+  return {order, slug};
+}
+
+export const getProjectBySlug = cache(
+  async (slug: string): Promise<Project | null> => {
+    try {
+      const filePath = path.join(PROJECTS_DIR, `${slug}.md`);
+
+      if (!fs.existsSync(filePath)) {
+        console.error(`File not found: ${slug}.md`);
+        return null;
+      }
+
+      const raw = fs.readFileSync(filePath, "utf-8");
+      const {data, content} = matter(raw);
+
+      const parsed = ProjectFrontmatterSchema.safeParse(data);
+      if (!parsed.success) {
+        console.error(
+          `Invalid project frontmatter in ${slug}:`,
+          parsed.error.format()
+        );
+        return null;
+      }
+
+      const html = await renderMarkdown(content);
+      const {order} = parseFilename(slug);
+
+      return {
+        ...parsed.data,
+        slug,
+        order,
+        content,
+        html,
+      };
+    } catch (error) {
+      console.error(`Failed to load project ${slug}:`, error);
+      return null;
+    }
+  }
+);
+
+export const getAllProjectSlugs = cache((): string[] => {
+  if (!fs.existsSync(PROJECTS_DIR)) return [];
+
+  return fs
+    .readdirSync(PROJECTS_DIR)
+    .filter((file) => file.endsWith(".md"))
+    .map((file) => file.replace(/\.md$/, ""));
+});
+
+export const getAllProjects = cache(async (): Promise<Project[]> => {
+  const slugs = getAllProjectSlugs();
+  const projects = await Promise.all(
+    slugs.map((slug) => getProjectBySlug(slug))
+  );
+  return projects
+    .filter((p): p is Project => p !== null)
+    .sort((a, b) => a.order - b.order);
+});
 
 
 ==========================================
@@ -2088,5 +2653,98 @@ function buildExperienceIndex() {
 }
 
 buildExperienceIndex();
+
+
+==========================================
+FILE: ./src/scripts/build-project-index.ts
+==========================================
+
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import {
+  ProjectFrontmatterSchema,
+  type ProjectFrontmatter,
+} from "@/lib/content/project.schema";
+
+const PROJECTS_DIR = path.join(process.cwd(), "src/content/projects");
+const PUBLIC_DIR = path.join(process.cwd(), "public");
+
+function parseFilename(filename: string): {order: number; slug: string} {
+  const base = filename.replace(/\.md$/, "");
+  const match = base.match(/^(\d+)-/);
+  let order = 0;
+  const slug = base;
+
+  if (match) {
+    order = parseInt(match[1], 10);
+  }
+
+  return {order, slug};
+}
+
+function buildProjectIndex() {
+  if (!fs.existsSync(PROJECTS_DIR)) {
+    console.error(`Directory not found: ${PROJECTS_DIR}`);
+    return;
+  }
+
+  if (!fs.existsSync(PUBLIC_DIR)) {
+    fs.mkdirSync(PUBLIC_DIR, {recursive: true});
+  }
+
+  const files = fs.readdirSync(PROJECTS_DIR).filter((f) => f.endsWith(".md"));
+  const index: Array<
+    ProjectFrontmatter & {
+      slug: string;
+      order: number;
+    }
+  > = [];
+
+  console.log(`Found ${files.length} project files`);
+
+  for (const file of files) {
+    console.log(`Processing: ${file}`);
+
+    try {
+      const raw = fs.readFileSync(path.join(PROJECTS_DIR, file), "utf-8");
+      const {data} = matter(raw);
+
+      const parsed = ProjectFrontmatterSchema.safeParse(data);
+      if (!parsed.success) {
+        console.error(
+          `❌ Invalid frontmatter in ${file}:`,
+          parsed.error.format()
+        );
+        continue;
+      }
+
+      const {order, slug} = parseFilename(file);
+
+      index.push({
+        ...parsed.data,
+        slug,
+        order,
+      });
+
+      console.log(`✅ Added: ${slug}`);
+    } catch (error) {
+      console.error(`❌ Failed to process ${file}:`, error);
+    }
+  }
+
+  // Sort by order number
+  index.sort((a, b) => a.order - b.order);
+
+  fs.writeFileSync(
+    path.join(PUBLIC_DIR, "project-index.json"),
+    JSON.stringify(index, null, 2)
+  );
+
+  console.log(`✅ Built project index for ${index.length} items`);
+  console.log(`📁 Output: ${path.join(PUBLIC_DIR, "project-index.json")}`);
+}
+
+buildProjectIndex();
 
 
