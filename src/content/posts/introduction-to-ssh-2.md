@@ -27,9 +27,9 @@ On systems with OpenSSH (Linux, macOS, modern Windows), use `ssh-keygen`.
 
 A modern default is **Ed25519**:
 
+```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
-
-text
+```
 
 Options:
 
@@ -38,36 +38,34 @@ Options:
 
 You’ll see prompts:
 
-1. **Key file location**:
-   Enter file in which to save the key (/home/youruser/.ssh/id_ed25519):
+1. **Key file location**
+   Enter file in which to save the key (`/home/youruser/.ssh/id_ed25519`):
 
-text
+   - Press **Enter** to accept the default, or
+   - Provide a custom path if you need multiple keys.
 
-- Press **Enter** to accept the default, or
-- Provide a custom path if you need multiple keys.
-
-2. **Passphrase**:
+2. **Passphrase**
    Enter passphrase (empty for no passphrase):
 
-text
-
-- A passphrase encrypts your private key at rest.
-- If possible, always set a strong passphrase.
+   - A passphrase encrypts your private key at rest.
+   - If possible, always set a strong passphrase.
 
 After completion, you have:
 
-- Private key: e.g., `~/.ssh/id_ed25519`
-- Public key: e.g., `~/.ssh/id_ed25519.pub`
+- **Private key**: `~/.ssh/id_ed25519`
+- **Public key**: `~/.ssh/id_ed25519.pub`
 
 The **private key must never be shared**. The public key is what you place on servers.
+
+---
 
 ### Step 2: Copy Your Public Key to the Server
 
 If `ssh-copy-id` is available (common on Linux/macOS):
 
+```bash
 ssh-copy-id user@server_ip
-
-text
+```
 
 This:
 
@@ -79,19 +77,22 @@ If `ssh-copy-id` is not available, copy manually:
 
 1. Show your public key:
 
-````bash
+```bash
 cat ~/.ssh/id_ed25519.pub
-``
+```
 
 2. Copy the output.
 3. Connect to the server with your password.
 4. On the server:
+
 ```bash
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
 echo "your_public_key_here" >> ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
-````
+```
+
+---
 
 ### Step 3: Log In with Your Key
 
@@ -113,8 +114,8 @@ If your key has a passphrase, you may be prompted for it. To avoid frequent prom
 ssh user@server_ip
 ```
 
-- `user`: Remote username (`root`, `ubuntu`, `ec2-user`, etc.).
-- `server_ip`: IP address or hostname (e.g., `203.0.113.10`, `example.com`).
+- `user`: Remote username (`root`, `ubuntu`, `ec2-user`, etc.)
+- `server_ip`: IP address or hostname (e.g., `203.0.113.10`, `example.com`)
 
 If your local username matches the remote one:
 
@@ -122,33 +123,39 @@ If your local username matches the remote one:
 ssh server_ip
 ```
 
+---
+
 ### Use a Non-Default Port
 
-If SSH is running on a custom port, say 2222:
+If SSH is running on a custom port, for example `2222`:
 
+```bash
 ssh -p 2222 user@server_ip
+```
 
-text
+---
 
 ### Run One Command Remotely
 
 To execute a single command and exit:
 
+```bash
 ssh user@server_ip "uname -a"
-
-text
+```
 
 Examples:
 
 - Restart a service:
-  ssh user@server_ip "sudo systemctl restart nginx"
 
-text
+```bash
+ssh user@server_ip "sudo systemctl restart nginx"
+```
 
 - Check disk usage:
-  ssh user@server_ip "df -h"
 
-text
+```bash
+ssh user@server_ip "df -h"
+```
 
 This is very useful in scripts and automation.
 
@@ -162,35 +169,37 @@ SSH also powers file transfer utilities like `scp` and `rsync`.
 
 Copy a local file to a remote server:
 
+```bash
 scp file.txt user@server_ip:/remote/path/
-
-text
+```
 
 Copy a directory recursively:
 
+```bash
 scp -r my_folder user@server_ip:/remote/path/
-
-text
+```
 
 Copy from remote to local:
 
+```bash
 scp user@server_ip:/remote/path/file.txt ./file.txt
+```
 
-text
+---
 
 ### Using `rsync` Over SSH
 
 `rsync` is ideal for sync and backup workflows:
 
+```bash
 rsync -avz ./local_dir/ user@server_ip:/remote/path/
-
-text
+```
 
 Common options:
 
-- `-a`: Archive mode (preserves metadata).
-- `-v`: Verbose.
-- `-z`: Compress data during transfer.
+- `-a`: Archive mode (preserves metadata)
+- `-v`: Verbose
+- `-z`: Compress data during transfer
 
 By default, specifying `user@server_ip:` makes `rsync` use SSH as the transport.
 
@@ -202,22 +211,22 @@ You can simplify connections by configuring hosts in `~/.ssh/config` on your loc
 
 Example:
 
+```sshconfig
 Host myserver
-HostName 203.0.113.10
-User ubuntu
-IdentityFile ~/.ssh/id_ed25519
-Port 22
-
-text
+  HostName 203.0.113.10
+  User ubuntu
+  IdentityFile ~/.ssh/id_ed25519
+  Port 22
+```
 
 Now you can connect with:
 
+```bash
 ssh myserver
-
-text
+```
 
 Benefits:
 
-- Short nicknames for servers.
-- Automatic selection of user, key, and port.
-- Cleaner scripts and commands when managing multiple environments.
+- Short nicknames for servers
+- Automatic selection of user, key, and port
+- Cleaner scripts and commands when managing multiple environments

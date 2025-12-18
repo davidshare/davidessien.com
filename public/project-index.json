@@ -61,6 +61,8 @@
       "FastAPI",
       "Next.js"
     ],
+    "repoUrl": "https://github.com/davidshare",
+    "demoUrl": "https://github.com/davidshare",
     "slug": "01-fullstack-monitoring-docker-compose",
     "order": 1
   }
