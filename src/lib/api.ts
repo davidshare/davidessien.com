@@ -7,7 +7,7 @@ const PROJECTS_DIR = path.join((process as any).cwd(), "src/content/projects");
 const POSTS_DIR = path.join((process as any).cwd(), "src/content/posts");
 const EXPERIENCE_DIR = path.join(
   (process as any).cwd(),
-  "src/content/experience"
+  "src/content/experiences"
 );
 
 export interface Project {
@@ -81,20 +81,6 @@ export async function getExperience(): Promise<Experience[]> {
   return experiences;
 }
 
-export const MOCK_POSTS: Post[] = [
-  // Fallback mock data if files aren't found, but kept minimal as we prioritize files now
-  {
-    slug: "1",
-    title: "Article title goes here",
-    excerpt: "Lorem ipsum dolor sit amet consectetur.",
-    date: "2023-02-19",
-    author: "John Doe",
-    coverImage: "https://picsum.photos/800/600?random=10",
-    category: "Strategy",
-    content: "",
-  },
-];
-
 // Helper to get files
 function getFiles(dir: string) {
   if (!fs.existsSync(dir)) return [];
@@ -103,7 +89,6 @@ function getFiles(dir: string) {
 
 export async function getPosts(): Promise<Post[]> {
   const files = getFiles(POSTS_DIR);
-  if (files.length === 0) return MOCK_POSTS;
 
   const posts = files
     .map((filename) => {

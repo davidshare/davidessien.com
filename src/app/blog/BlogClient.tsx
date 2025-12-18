@@ -56,7 +56,7 @@ const BlogClient: React.FC<BlogClientProps> = ({ posts }) => {
           I AM DAVID ESSIEN
         </p>
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl mb-6">
-          Davidshare Blog
+          Learn DevOps and SRE
         </h1>
         <p className="max-w-2xl text-muted-foreground text-lg leading-relaxed">
           DevOps engineer with over 15 years of experience in the tech industry. He is also the

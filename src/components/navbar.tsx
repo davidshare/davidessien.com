@@ -55,14 +55,14 @@ export function Navbar() {
           <div className="mr-4 flex">
             <Link href="/" className="mr-6 flex items-center space-x-2">
               <span className="text-xl font-bold flex items-center gap-2">
-                <span className="text-2xl">❖</span> Davidshare
+                <span className="text-2xl">❖</span> David Essien
               </span>
             </Link>
           </div>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
-            <NavLink href="#services">Services</NavLink>
+            <NavLink href="/#services">Services</NavLink>
             <NavLink href="#works">Projects</NavLink>
             <NavLink href="#about">About</NavLink>
             <NavLink href="#testimonials">Testimonials</NavLink>
@@ -105,7 +105,7 @@ export function Navbar() {
         {isOpen && (
           <div className="md:hidden border-b bg-background p-4">
             <nav className="flex flex-col space-y-2">
-              <NavLink href="#services" mobile onClick={() => setIsOpen(false)}>Services</NavLink>
+              <NavLink href="/#services" mobile onClick={() => setIsOpen(false)}>Services</NavLink>
               <NavLink href="#works" mobile onClick={() => setIsOpen(false)}>Works</NavLink>
               <NavLink href="#about" mobile onClick={() => setIsOpen(false)}>About</NavLink>
               <NavLink href="#testimonials" mobile onClick={() => setIsOpen(false)}>Testimonials</NavLink>

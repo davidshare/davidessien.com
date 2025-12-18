@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer";
 import BlogClient from "./BlogClient";
 
 export const metadata = {
-  title: "Blog | Davidshare",
+  title: "Blog | David Essien",
   description: "Insights and articles from a DevOps Engineer",
 };
 

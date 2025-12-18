@@ -1,0 +1,125 @@
+[
+  {
+    "title": "DevOps Engineer",
+    "company": "Bitmama/Changera",
+    "location": "Remote (Lagos, Nigeria)",
+    "roleType": "Full-time",
+    "remote": true,
+    "duration": {
+      "start": "2021-01",
+      "end": "2024-11",
+      "label": "Jan 2021 – Nov 2024"
+    },
+    "description": "Designed and managed Kubernetes-based production infrastructure on DigitalOcean, implemented CI/CD pipelines, and improved system reliability through monitoring and automation.",
+    "tags": [
+      "devops",
+      "kubernetes",
+      "ci-cd",
+      "monitoring",
+      "terraform"
+    ],
+    "techStack": [
+      "Kubernetes (EKS/GKE)",
+      "Terraform",
+      "GitHub Actions",
+      "Helm",
+      "ArgoCD",
+      "DigitalOcean",
+      "Prometheus",
+      "Grafana"
+    ],
+    "slug": "03-bitmama-changera-devops-engineer",
+    "order": 3
+  },
+  {
+    "title": "Customer Reliability Engineer (DevOps)",
+    "company": "Cloudkite.io",
+    "location": "Remote (Austin, Texas)",
+    "roleType": "Full-time",
+    "remote": true,
+    "duration": {
+      "start": "2020-07",
+      "end": "2023-11",
+      "label": "Jul 2020 – Nov 2023"
+    },
+    "description": "Supported and optimized cloud-native applications on AWS and GCP, improved CI/CD workflows, and provided incident response and technical support for client infrastructures.",
+    "tags": [
+      "devops",
+      "reliability",
+      "aws",
+      "gcp",
+      "kubernetes",
+      "ci-cd"
+    ],
+    "techStack": [
+      "AWS",
+      "GCP",
+      "Kubernetes",
+      "Jenkins",
+      "GitLab CI",
+      "Bitbucket Pipelines",
+      "Node.js",
+      "Python"
+    ],
+    "slug": "02-cloudkite-customer-reliability-engineer",
+    "order": 2
+  },
+  {
+    "title": "DevOps Engineer",
+    "company": "Goodlight (Andela)",
+    "location": "Remote",
+    "roleType": "Full-time",
+    "remote": true,
+    "duration": {
+      "start": "2019-08",
+      "end": "2020-03",
+      "label": "Aug 2019 – Mar 2020"
+    },
+    "description": "Implemented infrastructure as code with Terraform, automated AWS Lambda deployments, and developed incident response and failover mechanisms for EC2.",
+    "tags": [
+      "devops",
+      "aws",
+      "terraform",
+      "automation",
+      "reliability"
+    ],
+    "techStack": [
+      "AWS (EC2, Lambda)",
+      "Terraform",
+      "Linux",
+      "Bash"
+    ],
+    "slug": "01-goodlight-devops-engineer",
+    "order": 1
+  },
+  {
+    "title": "Software Developer",
+    "company": "Andela Talent Accelerator",
+    "location": "Lagos, Nigeria",
+    "roleType": "Full-time",
+    "remote": false,
+    "duration": {
+      "start": "2018-12",
+      "end": "2020-03",
+      "label": "Dec 2018 – Mar 2020"
+    },
+    "description": "Developed RESTful APIs with Node.js and Express, optimized database performance, and built frontend applications with React focusing on performance and maintainability.",
+    "tags": [
+      "software-development",
+      "nodejs",
+      "react",
+      "rest-api",
+      "databases"
+    ],
+    "techStack": [
+      "Node.js",
+      "Express.js",
+      "React",
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB"
+    ],
+    "slug": "00-andela-software-developer",
+    "order": 0
+  }
+]

@@ -47,7 +47,7 @@ export function ExperienceSection({ items }: ExperienceProps) {
 
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
           {/* Tabs */}
-          <div className="flex flex-col gap-2 min-w-[200px]">
+          <div className="flex flex-col gap-2 min-w-50 self-start">
             {TABS.map((tab) => (
               <button
                 key={tab.id}
@@ -97,6 +97,19 @@ export function ExperienceSection({ items }: ExperienceProps) {
                     </div>
                   </div>
                 ))}
+                {activeTab && (
+                  <div className="pt-8 mt-auto">
+                    <Link href={`/${activeTab.toLowerCase()}`}>
+                      <Button
+                        variant="outline"
+                        className="w-fit rounded-full border-foreground text-foreground hover:bg-foreground hover:text-background flex items-center gap-2"
+                      >
+                        {TABS.find(tab => tab.id === activeTab)?.icon}
+                        {`View all my ${activeTab}`}
+                      </Button>
+                    </Link>
+                  </div>
+                )}
               </div>
             )}
           </div>
