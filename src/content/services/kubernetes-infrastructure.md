@@ -6,7 +6,7 @@ image: /images/services/cicd.jpg
 icon: kubernetes
 duration: Project-based/Monthly Retainer
 description: Design, implement, and manage production-grade Kubernetes clusters with automated scaling, monitoring, and CI/CD integration.
-primaryCategory: Cloud navite
+primaryCategory: Cloudnavite
 categories:
   - cloudnative
   - Kubernetes

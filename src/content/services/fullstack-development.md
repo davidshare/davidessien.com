@@ -6,7 +6,7 @@ image: /images/services/cicd.jpg
 icon: code
 duration: Project-based
 description: End-to-end development of scalable web applications with modern React/Next.js frontends and Node.js/FastAPI backends.
-primaryCategory: Development
+primaryCategory: Fullstack Development
 categories:
   - Development
   - Web Applications

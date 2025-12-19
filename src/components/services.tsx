@@ -1,44 +1,47 @@
 "use client";
 
 import * as React from "react";
-import type { Project } from "@/lib/projects";
+import type { Service } from "@/lib/services";
 import Image from "next/image";
-import { Cloud, Code2 } from "lucide-react";
+import Link from 'next/link'
+import { Cloud, Code2, Server, Cpu, Workflow, Database } from "lucide-react";
 
 interface ServicesProps {
-  projects: Project[];
+  services: Service[];
 }
 
+// Map icons based on service type or category
+const getServiceIcon = (serviceType: string) => {
+  switch (serviceType.toLowerCase()) {
+    case "consulting":
+      return <Cpu className="h-8 w-8" />;
+    case "implementation":
+      return <Server className="h-8 w-8" />;
+    case "development":
+      return <Code2 className="h-8 w-8" />;
+    case "automation":
+      return <Workflow className="h-8 w-8" />;
+    case "devops":
+      return <Cloud className="h-8 w-8" />;
+    case "database":
+      return <Database className="h-8 w-8" />;
+    default:
+      return <Cpu className="h-8 w-8" />;
+  }
+};
 
+export function Services({ services }: ServicesProps) {
+  const [randomServices, setRandomServices] = React.useState<Service[]>([]);
 
-export function Services({ projects }: ServicesProps) {
-  const [activeCategory, setActiveCategory] = React.useState("All");
-
-  const categories = React.useMemo(() => {
-    const set = new Set<string>(["All"]);
-    projects.forEach(p =>
-      p.categories.forEach(c => set.add(c))
-    );
-    return Array.from(set);
-  }, [projects]);
-
-
-  const services = React.useMemo(() => {
-    const filtered =
-      activeCategory === "All"
-        ? projects
-        : projects.filter(p =>
-          p.categories.includes(activeCategory)
-        );
-
-    return filtered.slice(0, 2).map(project => ({
-      icon: project.categories.includes("DevOps")
-        ? <Cloud className="h-8 w-8" />
-        : <Code2 className="h-8 w-8" />,
-      title: project.title,
-      description: project.description,
-    }));
-  }, [projects, activeCategory]);
+  // Shuffle and pick 2 random services on initial render
+  React.useEffect(() => {
+    if (services.length > 0) {
+      const shuffled = [...services]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 2);
+      setRandomServices(shuffled);
+    }
+  }, [services]);
 
   return (
     <section id="services" className="py-20 md:py-32 bg-background">
@@ -53,54 +56,92 @@ export function Services({ projects }: ServicesProps) {
             </h2>
           </div>
           <p className="max-w-md text-muted-foreground">
-            We conduct thorough evaluations of your competitors and target
-            audience to uncover industry best practices
+            Professional DevOps, Cloud, and Full-Stack development services to accelerate your digital transformation
           </p>
-          <div className="flex flex-wrap gap-2 mt-4 md:mt-0">
-            {categories.map(cat => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`rounded-full px-5 py-2 text-sm font-medium transition-colors
-        ${activeCategory === cat
-                    ? "bg-foreground text-background"
-                    : "bg-muted text-muted-foreground hover:bg-muted/80"
-                  }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+          {/* Category pills removed from here */}
         </div>
 
         <div className="grid gap-8 lg:grid-cols-2 items-center">
           <div className="space-y-6">
-            {services.map((service, index) => (
+            {randomServices.map((service, index) => (
               <div
-                key={index}
+                key={service.slug}
                 className="group relative overflow-hidden rounded-3xl border bg-card p-8 hover:shadow-lg transition-all duration-300"
               >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/5 text-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  {service.icon}
-                </div>
-                <h3 className="mb-2 text-xl font-bold">{service.title}</h3>
-                <p className="text-muted-foreground">{service.description}</p>
+                <Link href={`/services/${service.slug}`}>
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/5 text-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    {getServiceIcon(service.serviceType)}
+                  </div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <h3 className="text-xl font-bold">{service.title}</h3>
+                    <span className="text-xs font-medium px-3 py-1 rounded-full bg-primary/10 text-primary">
+                      {service.serviceType}
+                    </span>
+                  </div>
+                  <p className="text-muted-foreground mb-4">{service.description}</p>
+
+                  {/* Show features if available */}
+                  {service.features && service.features.length > 0 && (
+                    <div className="mt-4 pt-4 border-t">
+                      <ul className="space-y-2">
+                        {service.features.slice(0, 2).map((feature, idx) => (
+                          <li key={idx} className="flex items-center text-sm">
+                            <span className="text-primary mr-2">•</span>
+                            <span className="text-muted-foreground">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Duration info */}
+                  <div className="mt-4 text-sm text-muted-foreground">
+                    <span className="font-medium">{service.duration}</span>
+                  </div>
+                </Link>
               </div>
             ))}
           </div>
 
           <div className="relative aspect-square lg:aspect-auto lg:h-full min-h-[400px]">
             <div className="absolute inset-0 rounded-3xl overflow-hidden bg-black">
-              {/* Mockup of laptop */}
-              <Image
-                src="https://picsum.photos/800/600?grayscale"
-                alt="Laptop showing code"
-                fill
-                className="object-cover opacity-80"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              {/* Use service-related image or fallback */}
+              {randomServices[0]?.image ? (
+                <Image
+                  src={randomServices[0].image}
+                  alt={randomServices[0].title}
+                  fill
+                  className="object-cover opacity-80"
+                />
+              ) : (
+                <Image
+                  src="https://picsum.photos/800/600?grayscale"
+                  alt="Service showcase"
+                  fill
+                  className="object-cover opacity-80"
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+
+              {/* Overlay text */}
+              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                <h3 className="text-2xl font-bold mb-2">Expert Services</h3>
+                <p className="text-gray-300">
+                  Randomly selected from my portfolio of {services.length} professional services
+                </p>
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* View All Services link */}
+        <div className="mt-12 text-center">
+          <a
+            href="/services"
+            className="inline-flex items-center text-sm font-medium text-primary hover:underline"
+          >
+            View all {services.length} services →
+          </a>
         </div>
       </div>
     </section>

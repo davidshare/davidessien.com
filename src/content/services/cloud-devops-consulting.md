@@ -6,7 +6,7 @@ image: /images/services/cicd.jpg
 icon: cloud
 duration: Ongoing/Project-based
 description: Expert guidance on cloud migration, DevOps implementation, and infrastructure optimization for scalable, reliable systems.
-primaryCategory: Consulting
+primaryCategory: Devops Consulting
 categories:
   - Consulting
   - Cloud
