@@ -25,7 +25,7 @@ export function Projects({ projects }: ProjectsProps) {
   );
 
   return (
-    <section id="works" className="py-20 md:py-32">
+    <section id="works" className="py-15 md:py-20">
       <div className="container px-4 md:px-8">
         <div className="mb-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>

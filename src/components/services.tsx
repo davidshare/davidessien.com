@@ -5,6 +5,7 @@ import type { Service } from "@/lib/services";
 import Image from "next/image";
 import Link from 'next/link'
 import { Cloud, Code2, Server, Cpu, Workflow, Database } from "lucide-react";
+import { Button } from './ui/button';
 
 interface ServicesProps {
   services: Service[];
@@ -44,7 +45,7 @@ export function Services({ services }: ServicesProps) {
   }, [services]);
 
   return (
-    <section id="services" className="py-20 md:py-32 bg-background">
+    <section id="services" className="py-15 md:py-16 bg-background">
       <div className="container px-4 md:px-8">
         <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
@@ -135,13 +136,10 @@ export function Services({ services }: ServicesProps) {
         </div>
 
         {/* View All Services link */}
-        <div className="mt-12 text-center">
-          <a
-            href="/services"
-            className="inline-flex items-center text-sm font-medium text-primary hover:underline"
-          >
-            View all {services.length} services →
-          </a>
+        <div className="mt-12 flex justify-center">
+          <Button variant="outline" className="rounded-full px-8">
+            <Link href='/blog'>View all services →</Link>
+          </Button>
         </div>
       </div>
     </section>

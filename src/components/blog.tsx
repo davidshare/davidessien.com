@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from 'next/link'
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Post } from "@/lib/api";
@@ -70,7 +71,7 @@ export function Blog({ posts }: BlogProps) {
 
         <div className="mt-12 flex justify-center">
           <Button variant="outline" className="rounded-full px-8">
-            View All
+            <Link href='/blog'>View All →</Link>
           </Button>
         </div>
       </div>
