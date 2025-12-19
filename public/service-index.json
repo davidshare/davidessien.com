@@ -1,0 +1,166 @@
+[
+  {
+    "slug": "ci-cd-automation",
+    "title": "CI/CD Pipeline Automation",
+    "serviceType": "Automation",
+    "image": "/images/services/cicd.jpg",
+    "icon": "pipeline",
+    "duration": "Project-based/Setup + Training",
+    "description": "Design and implement automated CI/CD pipelines for rapid, reliable software delivery with comprehensive testing and deployment workflows.",
+    "primaryCategory": "Automation",
+    "categories": [
+      "Automation",
+      "DevOps",
+      "CI/CD",
+      "Testing"
+    ],
+    "tags": [
+      "ci-cd",
+      "github-actions",
+      "jenkins",
+      "gitlab-ci",
+      "automation",
+      "deployment"
+    ],
+    "features": [
+      "End-to-end CI/CD Pipeline Design & Implementation",
+      "Automated Testing Integration (Unit, Integration, E2E)",
+      "Multi-environment Deployment Strategies",
+      "Infrastructure as Code Integration",
+      "Security Scanning & Compliance Checks"
+    ],
+    "techStack": [
+      "GitHub Actions",
+      "Jenkins",
+      "GitLab CI/CD",
+      "Bitbucket Pipelines",
+      "Docker",
+      "Kubernetes",
+      "Terraform",
+      "SonarQube"
+    ],
+    "order": 999
+  },
+  {
+    "slug": "cloud-devops-consulting",
+    "title": "Cloud & DevOps Consulting",
+    "serviceType": "Consulting",
+    "image": "/images/services/cicd.jpg",
+    "icon": "cloud",
+    "duration": "Ongoing/Project-based",
+    "description": "Expert guidance on cloud migration, DevOps implementation, and infrastructure optimization for scalable, reliable systems.",
+    "primaryCategory": "Devops Consulting",
+    "categories": [
+      "Consulting",
+      "Cloud",
+      "DevOps",
+      "Architecture"
+    ],
+    "tags": [
+      "cloud-consulting",
+      "devops-transformation",
+      "architecture-review",
+      "best-practices"
+    ],
+    "features": [
+      "Cloud Migration Strategy & Implementation",
+      "DevOps Culture & Process Implementation",
+      "Infrastructure Architecture Review",
+      "Cost Optimization Analysis",
+      "Security & Compliance Guidance"
+    ],
+    "techStack": [
+      "AWS",
+      "GCP",
+      "Azure",
+      "Kubernetes",
+      "Terraform",
+      "Docker",
+      "CI/CD Tools"
+    ],
+    "order": 999
+  },
+  {
+    "slug": "fullstack-development",
+    "title": "Full-Stack Application Development",
+    "serviceType": "Fullstack Development",
+    "image": "/images/services/cicd.jpg",
+    "icon": "code",
+    "duration": "Project-based",
+    "description": "End-to-end development of scalable web applications with modern React/Next.js frontends and Node.js/FastAPI backends.",
+    "primaryCategory": "Fullstack Development",
+    "categories": [
+      "Development",
+      "Web Applications",
+      "Fullstack",
+      "API Development"
+    ],
+    "tags": [
+      "react",
+      "nextjs",
+      "nodejs",
+      "fastapi",
+      "api-development",
+      "responsive-design"
+    ],
+    "features": [
+      "Modern React/Next.js Frontend Development",
+      "Scalable Node.js & FastAPI Backend Services",
+      "RESTful API Design & Implementation",
+      "Database Design & Optimization (PostgreSQL, MongoDB)",
+      "Performance Optimization & Caching Strategies"
+    ],
+    "techStack": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "Express.js",
+      "FastAPI",
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "TypeScript"
+    ],
+    "order": 999
+  },
+  {
+    "slug": "kubernetes-infrastructure",
+    "title": "Kubernetes Infrastructure Management",
+    "serviceType": "Cloudnative Implementation",
+    "image": "/images/services/cicd.jpg",
+    "icon": "kubernetes",
+    "duration": "Project-based/Monthly Retainer",
+    "description": "Design, implement, and manage production-grade Kubernetes clusters with automated scaling, monitoring, and CI/CD integration.",
+    "primaryCategory": "Cloudnavite",
+    "categories": [
+      "cloudnative",
+      "Kubernetes",
+      "Containerization",
+      "Infrastructure"
+    ],
+    "tags": [
+      "kubernetes",
+      "container-orchestration",
+      "production-clusters",
+      "scaling",
+      "monitoring"
+    ],
+    "features": [
+      "Production Kubernetes Cluster Setup & Management",
+      "Auto-scaling Configuration & Optimization",
+      "Multi-environment Cluster Management (Dev/Staging/Prod)",
+      "Security Hardening & RBAC Configuration",
+      "Backup & Disaster Recovery Solutions"
+    ],
+    "techStack": [
+      "Kubernetes (EKS, GKE, Self-hosted)",
+      "Helm",
+      "ArgoCD",
+      "Prometheus",
+      "Grafana",
+      "AWS/EKS",
+      "DigitalOcean Kubernetes"
+    ],
+    "order": 999
+  }
+]

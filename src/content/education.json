@@ -1,0 +1,45 @@
+{
+  "education": [
+    {
+      "degree": "Bachelor of Science in Computer Science",
+      "institution": "University of Calabar, Nigeria",
+      "location": "Calabar, Nigeria",
+      "duration": "2009 – 2015",
+      "startYear": 2009,
+      "endYear": 2015,
+      "degreeType": "Bachelor's",
+      "fieldOfStudy": "Computer Science",
+      "relevantCourses": [
+        "Data Structures & Algorithms",
+        "Software Engineering",
+        "Database Systems",
+        "Computer Networks",
+        "Operating Systems",
+        "Web Development",
+        "Cloud Computing"
+      ],
+      "description": "Comprehensive undergraduate program covering fundamental computer science principles, software development methodologies, and emerging technologies."
+    },
+    {
+      "program": "Udacity Nanodegree in DevOps",
+      "institution": "Udacity",
+      "location": "Remote",
+      "duration": "May 2022 – August 2022",
+      "startMonthYear": "May 2022",
+      "endMonthYear": "August 2022",
+      "degreeType": "Nanodegree",
+      "fieldOfStudy": "DevOps Engineering",
+      "certificationId": "UDACITY-DEVOPS-ND",
+      "verificationUrl": "https://www.udacity.com/course/cloud-dev-ops-nanodegree--nd9991",
+      "description": "Advanced professional program focused on modern DevOps practices, cloud infrastructure, CI/CD automation, and container orchestration. Covers industry best practices for scalable, reliable software delivery.",
+      "skillsAcquired": [
+        "Continuous Integration/Continuous Deployment",
+        "Infrastructure as Code",
+        "Cloud Architecture",
+        "Containerization & Kubernetes",
+        "Monitoring & Observability",
+        "Microservices Deployment"
+      ]
+    }
+  ]
+}

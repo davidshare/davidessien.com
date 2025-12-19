@@ -1,6 +1,9 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import education from "@/content/education.json";
+import certifications from "@/content/certifications.json";
+import skills from "@/content/skills.json";
 
 // Constants for directories
 const PROJECTS_DIR = path.join((process as any).cwd(), "src/content/projects");
@@ -77,6 +80,7 @@ export async function getExperience(): Promise<Experience[]> {
     const {data, content} = matter(fileContent);
     return {
       slug: filename.replace(".md", ""),
+      type: "Experience",
       ...data,
       content,
     } as Experience;
@@ -167,4 +171,53 @@ export async function getRelatedPosts(
     .map((item) => item.post);
 
   return related;
+}
+
+export async function getExperienceSectionData(): Promise<Experience[]> {
+  const experience = await getExperience();
+
+  const educationItems: Experience[] = education.education.map((e: any) => ({
+    slug: `${e.institution}-${e.startYear}`,
+    title: e.degree || e.program,
+    company: e.institution,
+    period: e.duration,
+    type: "Education",
+    description: e.description,
+    location: e.location,
+    skills: e.relevantCourses || e.skillsAcquired,
+    content: "",
+  }));
+
+  const certificationItems: Experience[] = certifications.certifications.map(
+    (c: any) => ({
+      slug: c.certificateId,
+      title: c.name,
+      company: c.issuingOrganization,
+      period: `${c.issueDate} – ${c.expirationDate}`,
+      type: "Certification",
+      description: `Certified in ${c.skills.join(", ")}`,
+      skills: c.skills,
+      content: "",
+    })
+  );
+
+  const skillItems: Experience[] = Object.entries(skills.skills).map(
+    ([category, values]: any) => ({
+      slug: category.toLowerCase(),
+      title: category,
+      company: "Skill Set",
+      period: "Current",
+      type: "Skills",
+      description: category,
+      skills: values,
+      content: "",
+    })
+  );
+
+  return [
+    ...experience,
+    ...educationItems,
+    ...certificationItems,
+    ...skillItems,
+  ];
 }

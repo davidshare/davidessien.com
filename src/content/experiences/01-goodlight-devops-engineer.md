@@ -1,5 +1,5 @@
 ---
-slug: 01-devops-engineer-goodlight
+slug: 01-goodlight-devops-engineer
 title: DevOps Engineer
 company: Goodlight (Andela)
 location: Remote

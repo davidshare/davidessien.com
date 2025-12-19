@@ -1,5 +1,5 @@
 ---
-slug: 00-software-developer-andela
+slug: 00-andela-software-developer
 title: Software Developer
 company: Andela Talent Accelerator
 location: Lagos, Nigeria

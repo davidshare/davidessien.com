@@ -1,0 +1,71 @@
+{
+  "skills": {
+    "Cloud & Infrastructure": [
+      "AWS",
+      "EC2",
+      "IAM",
+      "GCP",
+      "VPC",
+      "RDS",
+      "DigitalOcean",
+      "S3",
+      "CloudWatch"
+    ],
+    "DevOps & Platform Engineering": [
+      "Docker",
+      "EKS",
+      "GKE",
+      "Kubernetes",
+      "Helm",
+      "ArgoCD",
+      "GitHub Actions",
+      "Jenkins",
+      "GitLab CI/CD",
+      "Bitbucket Pipelines",
+      "Terraform",
+      "AWS CloudFormation",
+      "Ansible"
+    ],
+    "Operating Systems & Scripting": [
+      "Linux Server Administration",
+      "Bash",
+      "Python"
+    ],
+    "Observability & Reliability": [
+      "Prometheus",
+      "Grafana",
+      "Loki",
+      "Stackdriver",
+      "Alerting & Incident Response"
+    ],
+    "Frontend Development": [
+      "React",
+      "Next.js",
+      "Modern JavaScript (ES6+)",
+      "Responsive UI Design"
+    ],
+    "Backend Development": [
+      "Node.js",
+      "Express.js",
+      "FastAPI",
+      "RESTful API Design"
+    ],
+    "Databases": ["PostgreSQL", "MySQL", "MongoDB", "DynamoDB"]
+  },
+
+  "descriptions": {
+    "Cloud & Infrastructure": "Designing, provisioning, and managing cloud infrastructure with a focus on scalability, security, cost efficiency, and high availability across multiple cloud providers.",
+
+    "DevOps & Platform Engineering": "Building reliable delivery pipelines and platform tooling that enable teams to ship software safely and repeatedly using infrastructure as code, container orchestration, and GitOps practices.",
+
+    "Operating Systems & Scripting": "Administering Linux-based systems and writing scripts to automate routine tasks, troubleshoot issues, and glue infrastructure and applications together.",
+
+    "Observability & Reliability": "Implementing monitoring, logging, alerting, and incident response practices to ensure systems are observable, resilient, and meet reliability targets.",
+
+    "Frontend Development": "Developing modern, responsive user interfaces with a focus on performance, accessibility, and maintainable component-based architectures.",
+
+    "Backend Development": "Designing and implementing backend services and APIs that are scalable, secure, and easy to integrate with frontend and third-party systems.",
+
+    "Databases": "Designing, querying, and operating relational and NoSQL databases with an emphasis on data integrity, performance, and scalability."
+  }
+}

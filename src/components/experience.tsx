@@ -20,10 +20,9 @@ const TABS = [
 export function ExperienceSection({ items }: ExperienceProps) {
   const [activeTab, setActiveTab] = React.useState("Experience");
 
-  const filteredItems = items.filter((item) => item.type === activeTab);
-
-  // Separate render logic for Skills as it might be different visual
-  const isSkills = activeTab === "Skills";
+  const filteredItems = items.filter((item) => item.type === activeTab).sort((a, b) => a.period < b.period ? 1 : -1);
+  const displayedItems = filteredItems.slice(0, 4);
+  const hasMore = filteredItems.length > 4;
 
   return (
     <section id="about" className="py-20 md:py-32 bg-secondary/20">
@@ -34,7 +33,7 @@ export function ExperienceSection({ items }: ExperienceProps) {
               About
             </p>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-              My Personal Work <br /> Details
+              My Work Details
             </h2>
           </div>
           <div className="flex flex-col md:items-end gap-4">
@@ -71,8 +70,15 @@ export function ExperienceSection({ items }: ExperienceProps) {
               </div>
             ) : (
               <div className="space-y-8">
-                {filteredItems.map((item) => (
+                {displayedItems.map((item) => (
                   <div key={item.slug} className="group relative border-b last:border-0 pb-8 last:pb-0">
+                    {item.type === "Experience" && (
+                      <Link
+                        href={`/experience/${item.slug}`}
+                        className="absolute inset-0 z-10"
+                        aria-label={`View ${item.title}`}
+                      />
+                    )}
                     <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                       <div>
                         <h3 className="text-lg font-bold">{item.title}</h3>
@@ -97,7 +103,7 @@ export function ExperienceSection({ items }: ExperienceProps) {
                     </div>
                   </div>
                 ))}
-                {activeTab && (
+                {hasMore && (
                   <div className="pt-8 mt-auto">
                     <Link href={`/${activeTab.toLowerCase()}`}>
                       <Button
