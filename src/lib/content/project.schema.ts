@@ -3,7 +3,7 @@ import {z} from "zod";
 export const ProjectFrontmatterSchema = z.object({
   title: z.string(),
   projectType: z.string(),
-  diagram: z.string().optional(),
+  image: z.string().optional(),
   duration: z.string(),
   description: z.string(),
   primaryCategory: z.string(),

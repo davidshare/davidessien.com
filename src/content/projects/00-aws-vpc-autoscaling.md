@@ -1,11 +1,11 @@
 ---
-slug: aws-vpc-autoscaling
+slug: 00-aws-vpc-autoscaling
 title: AWS VPC and Autoscaling
 projectType: Infrastructure
-diagram: /images/projects/aws-vpc-autoscaling.jpg
+image: /images/projects/aws-vpc-autoscaling.jpg
 duration: N/A
 description: Built a secure three-tier architecture on AWS VPC with public/private subnets, NAT gateways, and security groups, configured with auto-scaling for variable traffic loads.
-primaryCategory: Cloud
+primaryCategory: Cloud Infrastructure
 categories:
   - Cloud
   - AWS

@@ -13,7 +13,8 @@ const EXPERIENCE_DIR = path.join(
 export interface Project {
   slug: string;
   title: string;
-  category: string;
+  primaryCategory: string;
+  categories?: string[];
   description: string;
   image: string;
   content: string;

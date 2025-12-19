@@ -1,22 +1,45 @@
+"use client";
+
+import * as React from "react";
+import type { Project } from "@/lib/projects";
 import Image from "next/image";
 import { Cloud, Code2 } from "lucide-react";
 
-const services = [
-  {
-    icon: <Cloud className="h-8 w-8" />,
-    title: "Devops Engineering",
-    description:
-      "We conduct thorough evaluations of your competitors and target audience to uncover industry best practices.",
-  },
-  {
-    icon: <Code2 className="h-8 w-8" />,
-    title: "Software Development",
-    description:
-      "We conduct thorough evaluations of your competitors and target audience to uncover industry best practices",
-  },
-];
+interface ServicesProps {
+  projects: Project[];
+}
 
-export function Services() {
+
+
+export function Services({ projects }: ServicesProps) {
+  const [activeCategory, setActiveCategory] = React.useState("All");
+
+  const categories = React.useMemo(() => {
+    const set = new Set<string>(["All"]);
+    projects.forEach(p =>
+      p.categories.forEach(c => set.add(c))
+    );
+    return Array.from(set);
+  }, [projects]);
+
+
+  const services = React.useMemo(() => {
+    const filtered =
+      activeCategory === "All"
+        ? projects
+        : projects.filter(p =>
+          p.categories.includes(activeCategory)
+        );
+
+    return filtered.slice(0, 2).map(project => ({
+      icon: project.categories.includes("DevOps")
+        ? <Cloud className="h-8 w-8" />
+        : <Code2 className="h-8 w-8" />,
+      title: project.title,
+      description: project.description,
+    }));
+  }, [projects, activeCategory]);
+
   return (
     <section id="services" className="py-20 md:py-32 bg-background">
       <div className="container px-4 md:px-8">
@@ -33,6 +56,21 @@ export function Services() {
             We conduct thorough evaluations of your competitors and target
             audience to uncover industry best practices
           </p>
+          <div className="flex flex-wrap gap-2 mt-4 md:mt-0">
+            {categories.map(cat => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`rounded-full px-5 py-2 text-sm font-medium transition-colors
+        ${activeCategory === cat
+                    ? "bg-foreground text-background"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80"
+                  }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-2 items-center">

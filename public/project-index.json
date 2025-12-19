@@ -2,10 +2,10 @@
   {
     "title": "AWS VPC and Autoscaling",
     "projectType": "Infrastructure",
-    "diagram": "/images/projects/aws-vpc-autoscaling.jpg",
+    "image": "/images/projects/aws-vpc-autoscaling.jpg",
     "duration": "N/A",
     "description": "Built a secure three-tier architecture on AWS VPC with public/private subnets, NAT gateways, and security groups, configured with auto-scaling for variable traffic loads.",
-    "primaryCategory": "Cloud",
+    "primaryCategory": "Cloud Infrastructure",
     "categories": [
       "Cloud",
       "AWS",
@@ -35,7 +35,7 @@
   {
     "title": "Fullstack Monitoring Setup with Docker-Compose",
     "projectType": "DevOps / Monitoring",
-    "diagram": "/images/projects/fullstack-monitoring-docker.jpg",
+    "image": "/images/projects/fullstack-monitoring-docker.jpg",
     "duration": "N/A",
     "description": "Developed a comprehensive monitoring system for a to-do application with FastAPI backend and Next.js frontend, using Docker Compose, Terraform, and observability tools.",
     "primaryCategory": "Observability",

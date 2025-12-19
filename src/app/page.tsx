@@ -4,7 +4,7 @@ import { Projects } from "@/components/projects";
 import { ExperienceSection } from "@/components/experience";
 import { Blog } from "@/components/blog";
 import { Contact } from "@/components/contact";
-import { getProjects, getPosts, getExperience, Project, Post, Experience } from "@/lib/api";
+import { getProjects, getPosts, getExperience } from "@/lib/api";
 
 // --- Mock Data Fallback ---
 // Since this is a generated demo, if no files exist, we use this data.
@@ -19,7 +19,7 @@ export default async function Home() {
     <div className="min-h-screen bg-background text-foreground">
       <main>
         <Hero />
-        <Services />
+        <Services projects={projects} />
         <Projects projects={projects} />
         <ExperienceSection items={experience} />
         <Blog posts={posts} />

@@ -1,8 +1,8 @@
 ---
-slug: fullstack-monitoring-docker-compose
+slug: 01-fullstack-monitoring-docker-compose
 title: Fullstack Monitoring Setup with Docker-Compose
 projectType: DevOps / Monitoring
-diagram: /images/projects/fullstack-monitoring-docker.jpg
+image: /images/projects/fullstack-monitoring-docker.jpg
 duration: N/A
 description: Developed a comprehensive monitoring system for a to-do application with FastAPI backend and Next.js frontend, using Docker Compose, Terraform, and observability tools.
 primaryCategory: Observability

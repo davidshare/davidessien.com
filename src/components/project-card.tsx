@@ -15,10 +15,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     <Link href={`/projects/${project.slug}`}>
       <div className="group flex flex-col rounded-2xl border bg-card overflow-hidden h-full hover:shadow-lg transition-all duration-300">
         {/* Project Diagram/Image */}
-        {project.diagram && (
+        {project.image && (
           <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-gray-900">
             <Image
-              src={project.diagram}
+              src={project.image}
               alt={project.title}
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"

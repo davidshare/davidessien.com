@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
+import Link from 'next/link'
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Project } from "@/lib/api";
@@ -18,7 +19,9 @@ export function Projects({ projects }: ProjectsProps) {
   const filteredProjects = projects.filter(
     (project) =>
       activeCategory === "All" ||
-      project.category.toLowerCase() === activeCategory.toLowerCase()
+      project.categories?.some(
+        (category) => category.toLowerCase() === activeCategory.toLowerCase()
+      )
   );
 
   return (
@@ -55,7 +58,7 @@ export function Projects({ projects }: ProjectsProps) {
               key={project.slug}
               className="group relative overflow-hidden rounded-2xl bg-card border"
             >
-              <div className="relative aspect-[16/9] overflow-hidden">
+              <div className="relative aspect-video overflow-hidden">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -64,15 +67,22 @@ export function Projects({ projects }: ProjectsProps) {
                 />
                 <div className="absolute top-4 left-4">
                   <span className="inline-block rounded-full bg-background/90 px-3 py-1 text-xs font-semibold text-foreground backdrop-blur-sm">
-                    {project.category}
+                    {project.primaryCategory}
                   </span>
                 </div>
               </div>
               <div className="p-6">
-                <div className="mb-4 flex items-center justify-between">
-                  <h3 className="text-xl font-bold">{project.title}</h3>
-                  <Button variant="outline" size="sm" className="gap-2 rounded-full h-8 bg-black text-white hover:bg-black/80 border-none dark:bg-white dark:text-black">
-                    View Project <ArrowRight className="h-3 w-3" />
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <h3 className="text-xl font-bold flex-1 line-clamp-2">{project.title}</h3>
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="default"
+                    className="gap-2 rounded-full bg-black text-white hover:bg-black/80 border-none dark:bg-white dark:text-black shrink-0"
+                  >
+                    <Link href={`/projects/${project.slug}`}>
+                      View Project <ArrowRight className="h-3 w-3" />
+                    </Link>
                   </Button>
                 </div>
                 <p className="text-sm text-muted-foreground">

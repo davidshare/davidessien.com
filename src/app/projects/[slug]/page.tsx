@@ -106,12 +106,12 @@ export default async function ProjectSinglePage({
         </div>
 
         {/* Project Diagram */}
-        {project.diagram && (
+        {project.image && (
           <div className="mb-12 rounded-2xl overflow-hidden border shadow-lg">
             <div className="relative aspect-video">
               <Image
-                src={project.diagram}
-                alt={`${project.title} architecture diagram`}
+                src={project.image}
+                alt={`${project.title} architecture image`}
                 fill
                 className="object-cover"
               />
