@@ -62,7 +62,7 @@ export function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
-            <NavLink href="/#services">Services</NavLink>
+            <NavLink href="/services">Services</NavLink>
             <NavLink href="/projects">Projects</NavLink>
             <NavLink href="#about">About</NavLink>
             <NavLink href="#testimonials">Testimonials</NavLink>
@@ -105,7 +105,7 @@ export function Navbar() {
         {isOpen && (
           <div className="md:hidden border-b bg-background p-4">
             <nav className="flex flex-col space-y-2">
-              <NavLink href="/#services" mobile onClick={() => setIsOpen(false)}>Services</NavLink>
+              <NavLink href="/services" mobile onClick={() => setIsOpen(false)}>Services</NavLink>
               <NavLink href="#works" mobile onClick={() => setIsOpen(false)}>Works</NavLink>
               <NavLink href="#about" mobile onClick={() => setIsOpen(false)}>About</NavLink>
               <NavLink href="#testimonials" mobile onClick={() => setIsOpen(false)}>Testimonials</NavLink>
