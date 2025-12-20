@@ -16,6 +16,7 @@ excerpt: Part 2 of the SSH guide—generating SSH keys, copying them to servers,
 coverImage: /images/posts/ssh-intro.jpg
 status: published
 author: David Essien
+authorImage: /images/david-author.jpg
 draft: false
 ---
 

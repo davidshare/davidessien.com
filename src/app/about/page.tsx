@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import Image from 'next/image'
 import { notFound } from "next/navigation";
 import { renderMarkdown } from "@/lib/markdown"; // your helper
 
@@ -20,11 +21,21 @@ export default async function AboutPage() {
   const html = await renderMarkdown(content);
 
   return (
-    <main className="mx-auto max-w-3xl px-6 py-16">
+    <div className="mx-auto max-w-5xl py-16">
+      <div className="mb-6">
+        <Image
+          src="/images/about-image.jpg"
+          alt="David Essien"
+          width={1200}
+          height={630}
+          priority
+          className="rounded-3xl object-cover"
+        />
+      </div>
       <article
-        className="prose prose-neutral dark:prose-invert prose-lg"
+        className="prose prose-neutral dark:prose-invert prose-lg prose-h1:text-center prose-h4:text-center max-w-none"
         dangerouslySetInnerHTML={{ __html: html }}
       />
-    </main>
+    </div>
   );
 }

@@ -16,6 +16,7 @@ excerpt: Part 3 of the SSH guide—security best practices, a glimpse of advance
 coverImage: /images/posts/ssh-intro.jpg
 status: published
 author: David Essien
+authorImage: /images/david-author.jpg
 draft: false
 ---
 

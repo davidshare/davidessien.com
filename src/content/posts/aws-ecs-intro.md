@@ -17,6 +17,7 @@ excerpt: A beginner-friendly introduction to AWS ECS—what it is, why it’s us
 coverImage: /images/posts/aws-ecs-intro.jpg
 status: published
 author: David Essien
+authorImage: /images/david-author.jpg
 draft: false
 ---
 

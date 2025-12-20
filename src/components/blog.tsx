@@ -55,12 +55,17 @@ export function Blog({ posts }: BlogProps) {
                         <div className="w-full h-full bg-primary/10" />
                       )}
                     </div>
-                    <div className="text-xs">
-                      <p className="font-medium text-foreground">{post.author}</p>
-                      <p className="text-muted-foreground">{formatDate(post.date)}</p>
-                    </div>
+                    <Link href={`/about`} className="block cursor-pointer">
+                      <div className="text-xs">
+                        <p className="font-medium text-foreground">{post.author}</p>
+                        <p className="text-muted-foreground">{formatDate(post.date)}</p>
+                      </div>
+                    </Link>
                   </div>
-                  <Button variant="ghost" size="sm" className="gap-2 rounded-full hover:bg-primary hover:text-primary-foreground group-hover:translate-x-1 transition-all">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="gap-2 rounded-full hover:bg-primary hover:text-primary-foreground dark:hover:text-white group-hover:translate-x-1 transition-all cursor-pointer">
                     Read More <ArrowRight className="h-3 w-3" />
                   </Button>
                 </div>

@@ -89,7 +89,7 @@ export function Hero() {
         </div>
 
         {/* Brand Logos */}
-        <div className="mt-24 rounded-2xl bg-[#1A1A1A] p-8 md:p-12">
+        {/* <div className="mt-24 rounded-2xl bg-[#1A1A1A] p-8 md:p-12">
           <div className="flex flex-wrap justify-around items-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
             <h3 className="text-2xl text-white font-bold flex items-center gap-2">Google</h3>
             <h3 className="text-2xl text-white font-bold flex items-center gap-2">
@@ -100,7 +100,7 @@ export function Hero() {
             <h3 className="text-2xl text-white font-bold flex items-center gap-2">YouTube</h3>
             <h3 className="text-2xl text-white font-bold flex items-center gap-2">Pinterest</h3>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

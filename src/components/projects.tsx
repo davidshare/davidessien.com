@@ -41,7 +41,7 @@ export function Projects({ projects }: ProjectsProps) {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`rounded-full px-6 py-2 text-sm font-medium transition-colors ${activeCategory === category
+                className={`rounded-full px-6 py-2 text-sm font-medium transition-colors cursor-pointer ${activeCategory === category
                   ? "bg-foreground text-background"
                   : "bg-muted text-muted-foreground hover:bg-muted/80"
                   }`}
@@ -78,7 +78,7 @@ export function Projects({ projects }: ProjectsProps) {
                     asChild
                     variant="outline"
                     size="default"
-                    className="gap-2 rounded-full bg-black text-white hover:bg-black/80 border-none dark:bg-white dark:text-black shrink-0"
+                    className="gap-2 rounded-full bg-black text-white hover:bg-black/80 hover:text-white border-none dark:bg-white dark:text-black dark:hover:text-white shrink-0"
                   >
                     <Link href={`/projects/${project.slug}`}>
                       View Project <ArrowRight className="h-3 w-3" />

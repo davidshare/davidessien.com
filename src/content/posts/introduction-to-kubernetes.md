@@ -17,6 +17,7 @@ excerpt: A beginner-friendly introduction to Kubernetes—what it is, why it exi
 coverImage: /images/posts/kubernetes-intro.jpg
 status: published
 author: David Essien
+authorImage: /images/david-author.jpg
 draft: false
 ---
 

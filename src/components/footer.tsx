@@ -13,10 +13,10 @@ export function Footer() {
               </span>
             </Link>
             <div className="flex gap-4">
-              <Link href="https://github.com/davidshare" className="hover:text-primary transition-colors"><Github className="w-5 h-5" /></Link>
-              <Link href="https://facebook.com/iamdavidshare" className="hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></Link>
-              <Link href="#" className="hover:text-primary transition-colors"><MessageCircle className="w-5 h-5" /></Link>
-              <Link href="#" className="hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></Link>
+              <Link href="https://github.com/davidshare" className="transition-colors"><Github className="w-5 h-5" /></Link>
+              <Link href="https://facebook.com/iamdavidshare" className="transition-colors"><Facebook className="w-5 h-5" /></Link>
+              <Link href="+234 816 746 2431" className="transition-colors"><MessageCircle className="w-5 h-5" /></Link>
+              <Link href="https://linkedin.com/in/iamdavidshare" className="transition-colors"><Linkedin className="w-5 h-5" /></Link>
             </div>
           </div>
 

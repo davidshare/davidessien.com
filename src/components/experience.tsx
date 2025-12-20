@@ -55,7 +55,7 @@ export function ExperienceSection({ items }: ExperienceProps) {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-3 rounded-full px-6 py-3 text-sm font-medium transition-all text-left ${activeTab === tab.id
+                className={`flex items-center gap-3 rounded-full px-6 py-3 text-sm font-medium transition-all text-left cursor-pointer ${activeTab === tab.id
                   ? "bg-foreground text-background shadow-lg"
                   : "bg-background text-muted-foreground hover:bg-background/80 border"
                   }`}
