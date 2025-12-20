@@ -9,7 +9,7 @@
     "build:services": "tsx src/scripts/build-service-index.ts",
     "build:all": "npm run build:blog && npm run build:projects && npm run build:experience && npm run build:services",
     "dev": "npm run build:all && next dev",
-    "build": " npm run build:all && next build",
+    "build": "npm run build:all && next build",
     "start": "next start",
     "lint": "eslint"
   },
@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/markdown-it": "^14.1.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
