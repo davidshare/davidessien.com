@@ -104,7 +104,7 @@ export function Services({ services }: ServicesProps) {
             ))}
           </div>
 
-          <div className="relative aspect-square lg:aspect-auto lg:h-full min-h-[400px]">
+          <div className="relative w-full lg:aspect-auto lg:h-full min-h-[400px]">
             <div className="absolute inset-0 rounded-3xl overflow-hidden bg-black">
               {/* Use service-related image or fallback */}
               {randomServices[0]?.image ? (
