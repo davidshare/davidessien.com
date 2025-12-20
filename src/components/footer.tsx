@@ -13,8 +13,8 @@ export function Footer() {
               </span>
             </Link>
             <div className="flex gap-4">
-              <Link href="#" className="hover:text-primary transition-colors"><Github className="w-5 h-5" /></Link>
-              <Link href="#" className="hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></Link>
+              <Link href="https://github.com/davidshare" className="hover:text-primary transition-colors"><Github className="w-5 h-5" /></Link>
+              <Link href="https://facebook.com/iamdavidshare" className="hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></Link>
               <Link href="#" className="hover:text-primary transition-colors"><MessageCircle className="w-5 h-5" /></Link>
               <Link href="#" className="hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></Link>
             </div>
@@ -42,11 +42,11 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Follow me on</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><Link href="#" className="hover:text-white">Facebook</Link></li>
-              <li><Link href="#" className="hover:text-white">Linkedin</Link></li>
-              <li><Link href="#" className="hover:text-white">Twitter</Link></li>
-              <li><Link href="#" className="hover:text-white">Medium</Link></li>
-              <li><Link href="#" className="hover:text-white">Github</Link></li>
+              <li><Link href="https://facebook.com/iamdavidshare" className="hover:text-white">Facebook</Link></li>
+              <li><Link href="https://linkedin.com/in/iamdavidshare" className="hover:text-white">Linkedin</Link></li>
+              <li><Link href="https://x.com/iamdavidshare" className="hover:text-white">Twitter</Link></li>
+              <li><Link href="https://medium.com/@davidessienshare" className="hover:text-white">Medium</Link></li>
+              <li><Link href="https://github.com/davidshare" className="hover:text-white">Github</Link></li>
             </ul>
           </div>
         </div>

@@ -70,7 +70,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
             <div className="flex items-center gap-4 text-xs font-medium text-muted-foreground">
               <div className="flex items-center gap-2 hover:text-foreground cursor-pointer transition-colors">
-                <div className="bg-muted p-1.5 rounded-full"><Facebook className="w-3 h-3" /></div>
+                <div className="bg-muted p-1.5 rounded-full">
+                  <Link href={'https://web.facebook.com/iamdavidshare'}>
+                    <Facebook className="w-3 h-3" />
+                  </Link>
+                </div>
                 <span>242</span>
               </div>
               <div className="flex items-center gap-2 hover:text-foreground cursor-pointer transition-colors">
@@ -78,7 +82,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <span>768</span>
               </div>
               <div className="flex items-center gap-2 hover:text-foreground cursor-pointer transition-colors">
-                <div className="bg-muted p-1.5 rounded-full"><Linkedin className="w-3 h-3" /></div>
+                <div className="bg-muted p-1.5 rounded-full">
+                  <Link href={'https://www.linkedin.com/in/iamdavidshare/'}>
+                    <Linkedin className="w-3 h-3" />
+                  </Link>
+                </div>
                 <span>323</span>
               </div>
             </div>
@@ -142,10 +150,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <h3 className="text-lg font-medium mb-6">Share</h3>
                 <div className="flex justify-center gap-4">
                   <Button variant="outline" size="icon" className="rounded-full w-10 h-10 border-muted-foreground/20 hover:border-primary hover:text-primary transition-colors bg-background">
-                    <Instagram className="w-4 h-4" />
+                    <Link href={'https://www.instagram.com/iamdavidshare/'}>
+                      <Instagram className="w-4 h-4" />
+                    </Link>
                   </Button>
                   <Button variant="outline" size="icon" className="rounded-full w-10 h-10 border-muted-foreground/20 hover:border-primary hover:text-primary transition-colors bg-background">
-                    <Twitter className="w-4 h-4" />
+                    <Link href={'https://x.com/iamdavidshare'}>
+                      <Twitter className="w-4 h-4" />
+                    </Link>
                   </Button>
                   <Button variant="outline" size="icon" className="rounded-full w-10 h-10 border-muted-foreground/20 hover:border-primary hover:text-primary transition-colors bg-background">
                     <Send className="w-4 h-4" />

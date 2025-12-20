@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from 'next/link'
 import { Button } from "@/components/ui/button";
-import { Download, Linkedin, Facebook, Youtube } from "lucide-react";
+import { Download, Linkedin, Facebook } from "lucide-react";
 
 export function Hero() {
   return (
@@ -28,10 +28,14 @@ export function Hero() {
               </Button>
               <div className="flex items-center gap-4">
                 <Button variant="outline" size="icon" className="rounded-full w-12 h-12">
-                  <Linkedin className="h-5 w-5" />
+                  <Link href={'https://www.linkedin.com/in/iamdavidshare/'}>
+                    <Linkedin className="h-5 w-5" />
+                  </Link>
                 </Button>
                 <Button variant="outline" size="icon" className="rounded-full w-12 h-12">
-                  <Facebook className="h-5 w-5" />
+                  <Link href={'https://web.facebook.com/iamdavidshare'}>
+                    <Facebook className="h-5 w-5" />
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -88,7 +92,11 @@ export function Hero() {
         <div className="mt-24 rounded-2xl bg-[#1A1A1A] p-8 md:p-12">
           <div className="flex flex-wrap justify-around items-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
             <h3 className="text-2xl text-white font-bold flex items-center gap-2">Google</h3>
-            <h3 className="text-2xl text-white font-bold flex items-center gap-2">facebook</h3>
+            <h3 className="text-2xl text-white font-bold flex items-center gap-2">
+              <Link href={'https://web.facebook.com/iamdavidshare'}>
+                facebook
+              </Link>
+            </h3>
             <h3 className="text-2xl text-white font-bold flex items-center gap-2">YouTube</h3>
             <h3 className="text-2xl text-white font-bold flex items-center gap-2">Pinterest</h3>
           </div>
