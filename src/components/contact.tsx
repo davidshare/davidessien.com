@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export function Contact() {
   return (
-    <section className="bg-[#1C1C1C] text-white py-20 md:py-32">
+    <section className="bg-[#1C1C1C] text-white py-20 md:py-32" id='contact'>
       <div className="container px-4 md:px-8">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Left Column */}
@@ -39,7 +39,7 @@ export function Contact() {
 
           {/* Right Column - Form */}
           <div className="bg-white rounded-3xl p-8 text-black">
-            <form className="space-y-6">
+            <form className="space-y-6" action="https://formspree.io/f/xeejaprw" method='POST'>
               <div>
                 <label htmlFor="name" className="mb-2 block text-sm font-semibold">
                   Your name
@@ -47,7 +47,8 @@ export function Contact() {
                 <input
                   id="name"
                   type="text"
-                  placeholder="Vitalik Buterin"
+                  name='name'
+                  placeholder="David Essien"
                   className="w-full rounded-md border-0 bg-gray-100 px-4 py-3 text-sm placeholder:text-gray-400 focus:ring-2 focus:ring-black"
                 />
               </div>
@@ -58,7 +59,8 @@ export function Contact() {
                 <input
                   id="email"
                   type="email"
-                  placeholder="vitalik@company.com"
+                  name='email'
+                  placeholder="davidessien@company.com"
                   className="w-full rounded-md border-0 bg-gray-100 px-4 py-3 text-sm placeholder:text-gray-400 focus:ring-2 focus:ring-black"
                 />
               </div>
@@ -68,6 +70,7 @@ export function Contact() {
                 </label>
                 <input
                   id="phone"
+                  name='phone'
                   type="tel"
                   placeholder="+1 415 800-1287"
                   className="w-full rounded-md border-0 bg-gray-100 px-4 py-3 text-sm placeholder:text-gray-400 focus:ring-2 focus:ring-black"
@@ -79,13 +82,14 @@ export function Contact() {
                 </label>
                 <textarea
                   id="message"
+                  name='message'
                   rows={4}
-                  placeholder="Hi there, I would like to..."
+                  placeholder="Hi there, I would like to work with you on my next project."
                   className="w-full rounded-md border-0 bg-gray-100 px-4 py-3 text-sm placeholder:text-gray-400 focus:ring-2 focus:ring-black resize-none"
                 />
               </div>
               <div className="flex justify-end">
-                <Button className="bg-black text-white hover:bg-black/80 rounded-full px-6">
+                <Button type="submit" className="bg-black text-white hover:bg-black/80 rounded-full px-6">
                   Send Message <ArrowUpRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -93,6 +97,6 @@ export function Contact() {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 }

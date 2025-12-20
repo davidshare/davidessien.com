@@ -68,7 +68,7 @@ export function Navbar() {
             <NavLink href="/blog">Blog</NavLink>
             <NavLink href="/about">About</NavLink>
             <Button variant="default" size="sm" className="rounded-none bg-primary text-primary-foreground hover:bg-primary/90">
-              Hire Me
+              <Link href="/#contact">Hire Me</Link>
             </Button>
             {mounted && (
               <Button
@@ -110,7 +110,9 @@ export function Navbar() {
               <NavLink href="#about" mobile onClick={() => setIsOpen(false)}>About</NavLink>
               <NavLink href="#testimonials" mobile onClick={() => setIsOpen(false)}>Testimonials</NavLink>
               <NavLink href="#blog" mobile onClick={() => setIsOpen(false)}>Blog</NavLink>
-              <Button className="w-full mt-4">Hire Me</Button>
+              <Button asChild className="w-full mt-4">
+                <Link href="/#contact">Hire Me</Link>
+              </Button>
             </nav>
           </div>
         )}
