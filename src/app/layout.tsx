@@ -7,7 +7,7 @@ import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
-  title: "Knowhare | DevOps Engineer Portfolio",
+  title: "David Essien | DevOps Engineer Portfolio",
   description: "Portfolio of a DevOps Engineer & Co-founder",
 };
 
