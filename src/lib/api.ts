@@ -50,6 +50,11 @@ export interface Experience {
   title: string;
   company: string;
   period: string;
+  duration?: {
+    start: string; // "2018-12"
+    end: string; // "2020-03"
+    label: string; // "Dec 2018 – Mar 2020"
+  };
   type: "Experience" | "Education" | "Certification" | "Skills"; // Categorization
   description: string;
   location?: string;

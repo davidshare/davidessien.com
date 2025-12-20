@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from 'next/link'
 import { Button } from "@/components/ui/button";
 import { Download, Linkedin, Facebook, Youtube } from "lucide-react";
 
@@ -20,8 +21,10 @@ export function Hero() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="h-12 px-8 rounded-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
-                Download CV <Download className="ml-2 h-4 w-4" />
+              <Button asChild className="h-12 px-8 rounded-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
+                <Link href={'/documents/David-Essien-CV.pdf'} download>
+                  Download CV <Download className="ml-2 h-4 w-4" />
+                </Link>
               </Button>
               <div className="flex items-center gap-4">
                 <Button variant="outline" size="icon" className="rounded-full w-12 h-12">

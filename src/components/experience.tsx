@@ -38,9 +38,13 @@ export function ExperienceSection({ items }: ExperienceProps) {
           </div>
           <div className="flex flex-col md:items-end gap-4">
             <p className="max-w-md text-muted-foreground md:text-right">
-              We conduct thorough evaluations of your competitors and target audience to uncover industry best practices.
+              I bring hands-on experience across DevOps, cloud infrastructure, and full-stack development to help teams ship software that is stable, secure, and maintainable.
             </p>
-            <Button className="w-fit rounded-full" variant="outline">Download CV <Download className="ml-2 w-4 h-4" /></Button>
+            <Button asChild className="w-fit rounded-full" variant="outline">
+              <Link href={'/documents/David-Essien-CV.pdf'} download>
+                Download CV <Download className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
           </div>
         </div>
 
@@ -87,7 +91,7 @@ export function ExperienceSection({ items }: ExperienceProps) {
                           {item.location && <span>• {item.location}</span>}
                         </div>
                         <div className="text-muted-foreground text-sm max-w-xl">
-                          {item.description}
+                          {item.type != "Skills" && item.description}
                         </div>
                         {item.skills && (
                           <div className="flex flex-wrap gap-2 mt-3">
@@ -98,7 +102,7 @@ export function ExperienceSection({ items }: ExperienceProps) {
                         )}
                       </div>
                       <div className="text-sm font-medium whitespace-nowrap bg-secondary/50 px-3 py-1 rounded-md h-fit">
-                        {item.period}
+                        {(item.period ?? item.duration?.label) ?? ""}
                       </div>
                     </div>
                   </div>

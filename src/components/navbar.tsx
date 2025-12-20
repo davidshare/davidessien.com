@@ -64,9 +64,9 @@ export function Navbar() {
           <nav className="hidden md:flex items-center gap-6">
             <NavLink href="/services">Services</NavLink>
             <NavLink href="/projects">Projects</NavLink>
-            <NavLink href="#about">About</NavLink>
-            <NavLink href="#testimonials">Testimonials</NavLink>
+            <NavLink href="/testimonials">Testimonials</NavLink>
             <NavLink href="/blog">Blog</NavLink>
+            <NavLink href="/about">About</NavLink>
             <Button variant="default" size="sm" className="rounded-none bg-primary text-primary-foreground hover:bg-primary/90">
               Hire Me
             </Button>
