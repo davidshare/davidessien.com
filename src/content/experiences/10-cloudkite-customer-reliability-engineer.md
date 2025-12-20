@@ -1,5 +1,5 @@
 ---
-slug: 02-cloudkite-customer-reliability-engineer
+slug: 10-cloudkite-customer-reliability-engineer
 title: Customer Reliability Engineer (DevOps)
 company: Cloudkite.io
 location: Remote (Austin, Texas)

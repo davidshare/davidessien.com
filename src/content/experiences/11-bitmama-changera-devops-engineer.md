@@ -1,5 +1,5 @@
 ---
-slug: 03-bitmama-changera-devops-engineer
+slug: 11-bitmama-changera-devops-engineer
 title: DevOps Engineer
 company: Bitmama/Changera
 location: Remote (Lagos, Nigeria)

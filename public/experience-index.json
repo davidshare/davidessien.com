@@ -28,8 +28,8 @@
       "Prometheus",
       "Grafana"
     ],
-    "slug": "03-bitmama-changera-devops-engineer",
-    "order": 3
+    "slug": "11-bitmama-changera-devops-engineer",
+    "order": 11
   },
   {
     "title": "Customer Reliability Engineer (DevOps)",
@@ -61,8 +61,86 @@
       "Node.js",
       "Python"
     ],
-    "slug": "02-cloudkite-customer-reliability-engineer",
-    "order": 2
+    "slug": "10-cloudkite-customer-reliability-engineer",
+    "order": 10
+  },
+  {
+    "title": "DevOps Engineer",
+    "company": "Yodahealth",
+    "location": "Remote",
+    "roleType": "Contract",
+    "remote": true,
+    "duration": {
+      "start": "2020-09",
+      "end": "2020-09",
+      "label": "Sep 2020"
+    },
+    "description": "Built CI/CD pipelines and deployed a three-tier microservices application to Kubernetes on DigitalOcean.",
+    "tags": [
+      "devops",
+      "kubernetes",
+      "ci-cd",
+      "microservices"
+    ],
+    "techStack": [
+      "DigitalOcean",
+      "Kubernetes",
+      "Docker",
+      "GitHub Actions"
+    ],
+    "slug": "09-yodahealth-devops-engineer",
+    "order": 9
+  },
+  {
+    "title": "Frontend Developer",
+    "company": "Yodahealth",
+    "location": "Remote",
+    "roleType": "Contract",
+    "remote": true,
+    "duration": {
+      "start": "2020-06",
+      "end": "2020-07",
+      "label": "Jun 2020 – Jul 2020"
+    },
+    "description": "Developed the frontend application for yodahealth.io using React and SCSS.",
+    "tags": [
+      "frontend",
+      "react",
+      "scss"
+    ],
+    "techStack": [
+      "React",
+      "SCSS"
+    ],
+    "slug": "08-yodahealth-frontend-developer",
+    "order": 8
+  },
+  {
+    "title": "DevOps Engineer",
+    "company": "Aegle Health",
+    "location": "Lagos, Nigeria",
+    "roleType": "Contract",
+    "remote": false,
+    "duration": {
+      "start": "2020-05",
+      "end": "2020-05",
+      "label": "May 2020"
+    },
+    "description": "Set up containerized application deployments on DigitalOcean and implemented CI/CD pipelines to automate releases.",
+    "tags": [
+      "devops",
+      "kubernetes",
+      "docker",
+      "ci-cd"
+    ],
+    "techStack": [
+      "DigitalOcean",
+      "Kubernetes",
+      "Docker",
+      "GitHub Actions"
+    ],
+    "slug": "07-aegle-health-devops-engineer",
+    "order": 7
   },
   {
     "title": "DevOps Engineer",
@@ -89,8 +167,8 @@
       "Linux",
       "Bash"
     ],
-    "slug": "01-goodlight-devops-engineer",
-    "order": 1
+    "slug": "06-goodlight-devops-engineer",
+    "order": 6
   },
   {
     "title": "Software Developer",
@@ -119,7 +197,105 @@
       "MySQL",
       "MongoDB"
     ],
-    "slug": "00-andela-software-developer",
+    "slug": "04-andela-software-developer",
+    "order": 4
+  },
+  {
+    "title": "Co-Founder",
+    "company": "PSIFON",
+    "location": "Calabar, Cross River State, Nigeria",
+    "roleType": "Part-time",
+    "remote": false,
+    "duration": {
+      "start": "2017-10",
+      "end": "present",
+      "label": "Oct 2017 – Present"
+    },
+    "description": "Co-founded a technology-focused initiative, contributing to product development, infrastructure setup, and technical decision-making.",
+    "tags": [
+      "entrepreneurship",
+      "software-development",
+      "leadership"
+    ],
+    "techStack": [
+      "Web Technologies",
+      "Cloud Platforms"
+    ],
+    "slug": "03-psifo-cofounder",
+    "order": 3
+  },
+  {
+    "title": "Confidential Secretary",
+    "company": "All Progressives Congress (Cross River State)",
+    "location": "Calabar, Cross River State, Nigeria",
+    "roleType": "Full-time",
+    "remote": false,
+    "duration": {
+      "start": "2017-05",
+      "end": "2018-05",
+      "label": "May 2017 – May 2018"
+    },
+    "description": "Provided confidential administrative and documentation support for party operations at the state level.",
+    "tags": [
+      "administration",
+      "documentation",
+      "operations"
+    ],
+    "techStack": [
+      "Office Tools",
+      "Documentation Systems"
+    ],
+    "slug": "02-apc-cross-river-confidential-secretary",
+    "order": 2
+  },
+  {
+    "title": "Manager / Lead Designer & Programmer / Lead Instructor",
+    "company": "EkJessan Gems",
+    "location": "Calabar, Cross River State, Nigeria",
+    "roleType": "Full-time",
+    "remote": false,
+    "duration": {
+      "start": "2014-08",
+      "end": "2017-05",
+      "label": "Aug 2014 – May 2017"
+    },
+    "description": "Led operations, software development, design, and technical training for a multi-disciplinary technology and design organization.",
+    "tags": [
+      "leadership",
+      "software-development",
+      "training",
+      "management"
+    ],
+    "techStack": [
+      "Web Technologies",
+      "Design Tools",
+      "CMS Platforms"
+    ],
+    "slug": "01-ekjessan-gems-manager-lead",
+    "order": 1
+  },
+  {
+    "title": "Training Assistant / Researcher",
+    "company": "DigiArts Academy",
+    "location": "Calabar, Cross River State, Nigeria",
+    "roleType": "Full-time",
+    "remote": false,
+    "duration": {
+      "start": "2013-01",
+      "end": "2013-12",
+      "label": "Jan 2013 – Dec 2013"
+    },
+    "description": "Supported technical training and research activities for digital arts and technology programs.",
+    "tags": [
+      "training",
+      "research",
+      "technology-education"
+    ],
+    "techStack": [
+      "Web Technologies",
+      "Research Tools"
+    ],
+    "slug": "00-digiarts-academy-training-assistant",
     "order": 0
   }
 ]
