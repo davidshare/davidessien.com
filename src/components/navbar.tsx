@@ -113,8 +113,8 @@ export function Navbar() {
           <div className="md:hidden border-b bg-background p-4">
             <nav className="flex flex-col space-y-2">
               <NavLink href="/services" mobile onClick={() => setIsOpen(false)}>Services</NavLink>
-              <NavLink href="#works" mobile onClick={() => setIsOpen(false)}>Works</NavLink>
-              <NavLink href="#about" mobile onClick={() => setIsOpen(false)}>About</NavLink>
+              <NavLink href="/projects" mobile onClick={() => setIsOpen(false)}>Works</NavLink>
+              <NavLink href="/about" mobile onClick={() => setIsOpen(false)}>About</NavLink>
               <NavLink href="#testimonials" mobile onClick={() => setIsOpen(false)}>Testimonials</NavLink>
               <NavLink href="#blog" mobile onClick={() => setIsOpen(false)}>Blog</NavLink>
               <Button asChild className="w-full mt-4">
